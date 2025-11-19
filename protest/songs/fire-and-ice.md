@@ -1,6 +1,7 @@
 # FIRE not ICE
 ## FIRE resistance : ICE oppression
-### F.I.R.E. = Free Individual Rights Enforcement (A bold, principled counterforce to I.C.E.)
+### F.I.R.E. = Free Individual Rights Enforcement 
+### A bold, principled counterforce to I.C.E.
 
 ---
 
