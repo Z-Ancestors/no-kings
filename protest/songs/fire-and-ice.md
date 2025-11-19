@@ -5,8 +5,8 @@
 ---
 
 ## **"FIRE and ICE"**
-(Version 0.1)
-*(Free Individual Rights Enforcement)*
+(Version 0.1)</br>
+*(Free Individual Rights Enforcement)*</br>
 **A protest parody of “Fire and Rain” by James Taylor**
 
 ---
