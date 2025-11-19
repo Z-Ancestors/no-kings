@@ -2,14 +2,10 @@
 ## FIRE resistance : ICE oppression
 ### F.I.R.E. = Free Individual Rights Enforcement (A bold, principled counterforce to I.C.E.)
 
-**"FIRE and ICE"** (Version 0.1)
-(Free Individual Rights Enforcement)
-A protest parody of “Fire and Rain” by James Taylor
-
 ---
 
 ## **"FIRE and ICE"**
-
+(Version 0.1)
 *(Free Individual Rights Enforcement)*
 **A protest parody of “Fire and Rain” by James Taylor**
 
