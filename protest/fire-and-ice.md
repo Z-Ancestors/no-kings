@@ -6,8 +6,6 @@
 (Free Individual Rights Enforcement)
 A protest parody of “Fire and Rain” by James Taylor
 
-Excellent — here's a **full parody of James Taylor’s “Fire and Rain”** titled:
-
 ---
 
 ## **"FIRE and ICE"**
