@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>I'm a U.S. Navy Veteran — I Stand with Sen. Mark Kelly</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    @keyframes subtle-glow {
+      0%, 100% { box-shadow: 0 0 10px rgba(218, 165, 32, 0.3); }
+      50% { box-shadow: 0 0 20px rgba(218, 165, 32, 0.5); }
+    }
+    
+    @keyframes flag-wave {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      25% { transform: translateY(-2px) rotate(2deg); }
+      75% { transform: translateY(2px) rotate(-2deg); }
+    }
+    
+    body {
+      font-family: 'Georgia', 'Garamond', serif;
+      line-height: 1.8;
+      color: #1a1a2e;
+      background: linear-gradient(180deg, #0f1c2e 0%, #1a2332 50%, #0f1c2e 100%);
+      min-height: 100vh;
+      position: relative;
+    }
+    
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: 
+        repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255, 255, 255, 0.03) 2px, rgba(255, 255, 255, 0.03) 4px);
+      pointer-events: none;
+      z-index: 0;
+    }
+    
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .dress-blues-border {
+      border: 3px solid #daa520;
+      border-radius: 2px;
+      box-shadow: 
+        0 0 20px rgba(218, 165, 32, 0.4),
+        inset 0 0 30px rgba(0, 0, 0, 0.3);
+      position: relative;
+    }
+    
+    .dress-blues-border::after {
+      content: '';
+      position: absolute;
+      top: -1px;
+      left: -1px;
+      right: -1px;
+      bottom: -1px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      pointer-events: none;
+    }
+    
+    header {
+      text-align: center;
+      padding: 50px 30px;
+      background: 
+        linear-gradient(135deg, rgba(15, 28, 46, 0.98) 0%, rgba(26, 35, 50, 0.98) 100%);
+      color: #ffffff;
+      margin-bottom: 40px;
+      box-shadow: 
+        0 10px 40px rgba(0, 0, 0, 0.6),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      border: 3px solid #daa520;
+      border-radius: 2px;
+      position: relative;
+    }
+    
+    header::before {
+      content: '⚓';
+      position: absolute;
+      font-size: 6em;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0.05;
+      color: #daa520;
+    }
+    
+    header::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 8px;
+      background: linear-gradient(90deg, 
+        #daa520 0%, #daa520 33%, 
+        transparent 33%, transparent 66%, 
+        #daa520 66%, #daa520 100%);
+    }
+    
+    .rank-stripe {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 60px;
+      height: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      opacity: 0.3;
+    }
+    
+    .rank-stripe span {
+      height: 3px;
+      background: #daa520;
+      width: 100%;
+    }
+    
+    header h1 {
+      font-size: 2.5em;
+      margin-bottom: 15px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+      color: #ffffff;
+      font-weight: normal;
+      letter-spacing: 1px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    header p {
+      font-size: 1.2em;
+      color: #daa520;
+      font-style: italic;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+      position: relative;
+      z-index: 1;
+    }
+    
+    .flag-accent {
+      display: inline-block;
+      font-size: 1.5em;
+      margin-left: 10px;
+      animation: flag-wave 3s ease-in-out infinite;
+    }
+    
+    .navy-seal {
+      text-align: center;
+      margin: 30px 0;
+      font-size: 4em;
+      color: #daa520;
+      text-shadow: 0 0 20px rgba(218, 165, 32, 0.5);
+      animation: subtle-glow 3s ease-in-out infinite;
+    }
+    
+    .video-container {
+      text-align: center;
+      margin: 40px 0;
+      background: rgba(15, 28, 46, 0.95);
+      padding: 40px;
+      border-radius: 2px;
+      box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.5),
+        inset 0 0 30px rgba(0, 0, 0, 0.3);
+      border: 3px solid #daa520;
+      position: relative;
+    }
+    
+    .video-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: #daa520;
+    }
+    
+    .video-container h3 {
+      margin-bottom: 25px;
+      color: #daa520;
+      font-size: 1.6em;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-weight: normal;
+    }
+    
+    .video-wrapper {
+      position: relative;
+      max-width: 360px;
+      margin: 0 auto;
+      border-radius: 2px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+      border: 2px solid #daa520;
+    }
+    
+    iframe {
+      display: block;
+      width: 100%;
+      height: 640px;
+      border: none;
+    }
+    
+    section {
+      background: 
+        linear-gradient(135deg, rgba(245, 245, 250, 0.98) 0%, rgba(255, 255, 255, 0.98) 100%);
+      padding: 40px;
+      margin-bottom: 30px;
+      border-radius: 2px;
+      box-shadow: 
+        0 5px 20px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 3px solid #daa520;
+      border-left-width: 8px;
+      position: relative;
+    }
+    
+    section:hover {
+      transform: translateY(-3px);
+      box-shadow: 
+        0 8px 25px rgba(0, 0, 0, 0.5),
+        0 0 20px rgba(218, 165, 32, 0.2);
+    }
+    
+    .personal-testimony {
+      background: 
+        linear-gradient(135deg, rgba(15, 28, 46, 0.98) 0%, rgba(26, 35, 50, 0.98) 100%);
+      color: #ffffff;
+      border-color: #c41e3a;
+      border-left-width: 8px;
+      box-shadow: 
+        0 5px 20px rgba(0, 0, 0, 0.6),
+        inset 0 0 30px rgba(196, 30, 58, 0.1);
+    }
+    
+    section h2 {
+      color: #0f1c2e;
+      font-size: 2em;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 2px solid #daa520;
+      font-weight: normal;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    
+    .personal-testimony h2 {
+      color: #daa520;
+      border-bottom-color: #c41e3a;
+    }
+    
+    .personal-testimony p {
+      color: #ffffff;
+    }
+    
+    section p {
+      margin-bottom: 15px;
+      font-size: 1.1em;
+      color: #1a1a2e;
+      line-height: 1.9;
+    }
+    
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    
+    ul li {
+      padding: 18px 20px 18px 65px;
+      margin-bottom: 18px;
+      background: rgba(218, 165, 32, 0.05);
+      border-radius: 2px;
+      position: relative;
+      font-size: 1.05em;
+      transition: all 0.3s ease;
+      border-left: 4px solid #daa520;
+    }
+    
+    ul li:hover {
+      background: rgba(218, 165, 32, 0.1);
+      border-left-width: 6px;
+      padding-left: 63px;
+    }
+    
+    .bio ul li:before,
+    .values ul li:before {
+      content: "★";
+      position: absolute;
+      left: 25px;
+      color: #daa520;
+      font-size: 1.5em;
+    }
+    
+    .endorsement {
+      background: 
+        linear-gradient(135deg, rgba(15, 28, 46, 0.98) 0%, rgba(26, 35, 50, 0.98) 100%);
+      color: #ffffff;
+      text-align: center;
+      padding: 50px 40px;
+      border: 4px solid #daa520;
+      box-shadow: 
+        0 10px 40px rgba(0, 0, 0, 0.6),
+        inset 0 0 50px rgba(218, 165, 32, 0.1);
+      position: relative;
+    }
+    
+    .endorsement::before {
+      content: '⚓';
+      position: absolute;
+      font-size: 8em;
+      opacity: 0.05;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #daa520;
+    }
+    
+    .endorsement::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 6px;
+      background: linear-gradient(90deg, 
+        #daa520 0%, #daa520 33%, 
+        #c41e3a 33%, #c41e3a 66%, 
+        #0f1c2e 66%, #0f1c2e 100%);
+    }
+    
+    .endorsement h2 {
+      color: #daa520;
+      border-bottom-color: #c41e3a;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .endorsement p {
+      font-size: 1.2em;
+      line-height: 1.9;
+      color: #ffffff;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .footer {
+      text-align: center;
+      padding: 40px 20px;
+      color: #daa520;
+      font-size: 0.95em;
+      margin-top: 40px;
+      font-style: italic;
+    }
+    
+    .references {
+      background: rgba(15, 28, 46, 0.1);
+      padding: 25px;
+      border-left: 4px solid #daa520;
+      font-size: 0.9em;
+      color: #1a1a2e;
+      margin-top: 20px;
+      border-radius: 2px;
+      border: 2px solid #daa520;
+    }
+    
+    .references p {
+      margin-bottom: 8px;
+      font-size: 0.9em;
+      color: #1a1a2e;
+    }
+    
+    strong {
+      color: #0f1c2e;
+      font-weight: bold;
+    }
+    
+    .personal-testimony strong,
+    .endorsement strong {
+      color: #daa520;
+    }
+    
+    sup {
+      color: #c41e3a;
+      font-weight: bold;
+    }
+    
+    .motto {
+      text-align: center;
+      color: #daa520;
+      font-style: italic;
+      font-size: 1.1em;
+      margin: 30px 0;
+      letter-spacing: 2px;
+    }
+    
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 1.8em;
+      }
+      
+      section {
+        padding: 30px 25px;
+      }
+      
+      iframe {
+        height: 500px;
+      }
+      
+      .rank-stripe {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="dress-blues-border">
+      <div class="rank-stripe">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <h1>U.S. Navy Veteran — I Stand with Sen. Mark Kelly <span class="flag-accent">🇺🇸</span></h1>
+      <p>Honor • Courage • Commitment</p>
+    </header>
+
+    <div class="navy-seal">⚓</div>
+    <p class="motto">"Non sibi sed patriae" — Not Self, But Country</p>
+
+    <div class="video-container dress-blues-border">
+      <h3>Captain Kelly's Service Record</h3>
+      <div class="video-wrapper">
+        <iframe 
+          src="https://www.youtube.com/embed/8hTB3tCxFSs" 
+          title="YouTube video player" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+
+    <section class="bio dress-blues-border">
+      <h2>Service Record: Sen. Mark Kelly</h2>
+      <p><strong>Captain Mark Kelly, United States Navy (Retired)</strong></p>
+      <p>25 years of distinguished service to the United States of America:</p>
+      <ul style="list-style: none; padding-left: 0; background: none;">
+        <li>Rank Achieved: <strong>Captain (O-6)</strong> — One of the highest commissioned ranks in the United States Navy</li>
+        <li>Combat Operations: <strong>Operation Desert Storm</strong> — Flew combat missions in defense of freedom</li>
+        <li>Flight Hours: <strong>5,000+</strong> across more than 50 different aircraft types</li>
+        <li>Carrier Landings: <strong>375 successful landings</strong> — Among the most hazardous operations in naval aviation</li>
+        <li>Designations: <strong>Naval Aviator</strong> and <strong>Test Pilot</strong></li>
+        <li>NASA Service: Selected as astronaut, completed <strong>four Space Shuttle missions</strong></li>
+      </ul>
+      <p style="margin-top: 25px;">Following his honorable discharge and astronaut career, Captain Kelly continues to serve his country as United States Senator from Arizona.<sup>1,2</sup></p>
+    </section>
+
+    <section class="values dress-blues-border">
+      <h2>Why I Support Him</h2>
+      <ul>
+        <li>As a fellow Navy veteran, I recognize and respect his exemplary military service and continued dedication to veterans' welfare.<sup>3</sup></li>
+        <li>He demonstrates a commitment to bipartisan cooperation, evidence-based policy, and placing public service above private interests.<sup>4</sup></li>
+        <li>I support his dedication to protecting constitutional rights and serving all citizens, particularly those who have worn the uniform.<sup>5</sup></li>
+        <li>When his wife, Congresswoman Gabby Giffords, was shot while serving her constituents in Arizona, Captain Kelly displayed the same courage under fire that defined his military career — standing strong and continuing their shared mission of public service.<sup>6</sup></li>
+      </ul>
+    </section>
+
+    <section class="personal-testimony dress-blues-border">
+      <h2>A Personal Testament</h2>
+      <p>I understand the true cost of doing what is right, regardless of personal consequence.</p>
+      <p>During my service in the United States Navy, I served as a whistleblower. I reported multiple instances of sexual assault to my chain of command. The response I received was not justice, but retaliation and further assault. This experience taught me that our system, despite its ideals, too often shields perpetrators rather than protecting victims.</p>
+      <p><strong>I know what it means to stand against power.</strong> I recognize authentic courage when I see it. I can distinguish between those who serve with genuine honor and those who abuse their authority.</p>
+      <p>When I witness a decorated officer like Senator Mark Kelly — a combat veteran who served with distinction for 25 years and achieved the rank of Captain — being threatened by individuals who have never demonstrated comparable honor in service, I recognize it clearly: <strong>These are the tactics of those who fear accountability for their own actions.</strong></p>
+      <p>Those threatening Senator Kelly have never shown a fraction of the courage, sacrifice, or integrity that has defined his entire career. They attack him because his example of true service exposes their own moral bankruptcy.</p>
+    </section>
+
+    <section class="endorsement dress-blues-border">
+      <h2>My Endorsement</h2>
+      <p>I served in the United States Navy. I understand what the words service, duty, and sacrifice truly mean. <strong>I also understand what it costs to stand for what is right.</strong></p>
+      <p><strong>Captain Mark Kelly placed his life on the line for this nation.</strong> He flew combat missions in hostile territory. He completed 375 carrier landings — each one demanding exceptional skill and nerve. He served with honor for 25 years and achieved one of the Navy's highest ranks. He ventured into space in service to human advancement.</p>
+      <p>When personal tragedy struck — when his wife Congresswoman Gabby Giffords was shot while serving her constituents — he did not withdraw from public life. He stood firm. He drew strength from her resilience and continued their shared commitment to serve the American people.</p>
+      <p><strong>This is the caliber of leader we need.</strong> Someone who has genuinely served with honor. Someone who understands real sacrifice. Someone who perseveres through adversity. Someone who stands for what is right, regardless of difficulty.</p>
+      <p>For these reasons, I proudly endorse Senator Mark Kelly — because he is one of us, he has proven his commitment to our nation through decades of honorable service, and he upholds the values we swore to defend.</p>
+      <p><strong>He deserves our support, not threats from those who have never demonstrated a fraction of his courage or integrity.</strong></p>
+    </section>
+
+    <div class="references dress-blues-border">
+      <p><strong>References:</strong></p>
+      <p>1-6: Personal endorsement based on public record and veteran perspective</p>
+    </div>
+
+    <div class="footer">
+      <p>⚓ © 2025 — A Veteran's Endorsement ⚓</p>
+      <p>Paid for by individual supporter, not authorized by any candidate or committee</p>
+      <p style="margin-top: 15px;">"Semper Fortis" — Always Courageous</p>
+    </div>
+  </div>
+</body>
+</html>
