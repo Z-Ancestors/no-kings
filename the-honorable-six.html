@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Honorable Six - American Patriots</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.8;
+            color: #1a1a1a;
+            background: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: white;
+            padding: 50px 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            text-align: center;
+            border-top: 8px solid #003366;
+        }
+        
+        h1 {
+            color: #003366;
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+        
+        .subtitle {
+            color: #c41e3a;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .intro {
+            font-size: 1.2em;
+            color: #333;
+            max-width: 900px;
+            margin: 20px auto;
+            line-height: 1.9;
+        }
+        
+        .manifesto {
+            background: #2c2c2c;
+            color: white;
+            padding: 40px;
+            margin: 30px 0;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+        
+        .manifesto h2 {
+            color: white;
+            font-size: 2.2em;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        
+        .manifesto-quote {
+            font-size: 1.3em;
+            font-style: italic;
+            text-align: center;
+            margin: 25px 0;
+            padding: 25px;
+            border-left: 5px solid #c41e3a;
+            background: rgba(255,255,255,0.1);
+        }
+        
+        .heroes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+        
+        .hero-card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-left: 5px solid #003366;
+        }
+        
+        .hero-card h3 {
+            color: #003366;
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+        
+        .hero-card .title {
+            color: #c41e3a;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+        
+        .hero-card .service {
+            background: #f0f4f8;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        
+        .hero-card ul {
+            margin: 15px 0 15px 25px;
+        }
+        
+        .hero-card li {
+            margin: 8px 0;
+        }
+        
+        .section {
+            background: white;
+            padding: 40px;
+            margin-bottom: 25px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        h2 {
+            color: #003366;
+            font-size: 2.2em;
+            margin-bottom: 25px;
+            border-bottom: 3px solid #c41e3a;
+            padding-bottom: 15px;
+        }
+        
+        .timeline {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 8px;
+            margin: 25px 0;
+        }
+        
+        .timeline-item {
+            padding: 20px 0;
+            border-left: 3px solid #003366;
+            padding-left: 25px;
+            margin-left: 10px;
+        }
+        
+        .timeline-date {
+            font-weight: bold;
+            color: #c41e3a;
+            font-size: 1.1em;
+        }
+        
+        .cta {
+            background: #c41e3a;
+            color: white;
+            padding: 50px;
+            text-align: center;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+        
+        .cta h2 {
+            color: white;
+            border-bottom: none;
+            margin-bottom: 20px;
+        }
+        
+        .cta p {
+            font-size: 1.3em;
+            margin-bottom: 15px;
+        }
+        
+        footer {
+            text-align: center;
+            color: #1a1a1a;
+            padding: 40px;
+            margin-top: 40px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .highlight {
+            background: #fff3cd;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+        
+        strong {
+            color: #003366;
+        }
+        
+        .attacker-link {
+            color: #fff;
+            background: #c41e3a;
+            padding: 4px 12px;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+            font-weight: bold;
+            border: 2px solid #8b0000;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+        
+        .attacker-link:hover {
+            background: #8b0000;
+            transform: scale(1.05);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.8);
+        }
+        
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 0;
+            border: 1px solid #888;
+            width: 90%;
+            max-width: 900px;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+        
+        .modal-header {
+            background: #8b0000;
+            color: white;
+            padding: 30px;
+            border-radius: 10px 10px 0 0;
+        }
+        
+        .modal-header h2 {
+            color: white;
+            border: none;
+            margin: 0;
+        }
+        
+        .modal-body {
+            padding: 30px;
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+        
+        .close {
+            color: white;
+            float: right;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .close:hover,
+        .close:focus {
+            color: #ccc;
+        }
+        
+        .traitor-card {
+            background: #f8f9fa;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 5px;
+            border-left: 5px solid #8b0000;
+        }
+        
+        .traitor-card h3 {
+            color: #8b0000;
+            margin-bottom: 10px;
+        }
+        
+        .traitor-card .position {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .traitor-card ul {
+            margin-top: 10px;
+        }
+    </style>
+    <script>
+        function showAttackers() {
+            document.getElementById('attackerModal').style.display = 'block';
+        }
+        
+        function closeModal() {
+            document.getElementById('attackerModal').style.display = 'none';
+        }
+        
+        window.onclick = function(event) {
+            const modal = document.getElementById('attackerModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>The Honorable Six</h1>
+            <p class="subtitle">American Patriots Defending the Constitution</p>
+            <p class="intro">
+                Six members of Congress. Veterans of the Navy, Air Force, Army, and CIA. 
+                Combat pilots, intelligence officers, and decorated warriors. They recorded 
+                a simple message reminding service members of their duty to refuse illegal orders. 
+                For upholding their oath, they were falsely called <span class="highlight">traitors</span> and threatened 
+                with <span class="highlight">death</span> by <a class="attacker-link" onclick="showAttackers()">compromised political appointees</a>.
+            </p>
+            <p class="intro" style="margin-top: 20px;">
+                <strong>These are their stories. These are America's true patriots.</strong>
+            </p>
+        </header>
+
+        <div class="manifesto">
+            <h2>"Don't Give Up the Ship"</h2>
+            <div class="manifesto-quote">
+                "Right now, the threats to our Constitution aren't just coming from abroad, 
+                but from right here at home. Our laws are clear: You can refuse illegal orders. 
+                You must refuse illegal orders. No one has to carry out orders that violate 
+                the law or our Constitution."
+            </div>
+            <p style="text-align: center; font-size: 1.1em; margin-top: 25px;">
+                This message — a basic principle taught at every military academy and boot camp 
+                in America — sparked an unprecedented attack on sitting members of Congress by 
+                <a class="attacker-link" onclick="showAttackers()">those who fear accountability</a>.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>The Honorable Six: American Patriots</h2>
+            <p style="font-size: 1.1em; margin-bottom: 30px;">
+                They come from different branches of service. Different states. Different backgrounds. 
+                But they share one unbreakable bond: an oath to the Constitution of the United States.
+            </p>
+            
+            <div class="heroes-grid">
+                <div class="hero-card">
+                    <h3>Senator Mark Kelly</h3>
+                    <p class="title">Arizona • U.S. Navy Combat Pilot • NASA Astronaut</p>
+                    <div class="service">39 Combat Missions in Desert Storm • 4 Space Shuttle Missions</div>
+                    <ul>
+                        <li>Flew 39 combat missions during Operation Desert Storm</li>
+                        <li>Navy Captain and decorated combat veteran</li>
+                        <li>Commanded Space Shuttle Endeavour</li>
+                        <li>Spent over 50 days in space serving our nation</li>
+                        <li>Part of first twin astronauts in NASA history</li>
+                        <li>A man's man and American hero through and through</li>
+                    </ul>
+                </div>
+
+                <div class="hero-card">
+                    <h3>Senator Elissa Slotkin</h3>
+                    <p class="title">Michigan • CIA Analyst • Defense Official</p>
+                    <div class="service">3 Tours in Iraq • CIA & Pentagon Service</div>
+                    <ul>
+                        <li>CIA Middle East analyst, fluent in Arabic and Swahili</li>
+                        <li>Served three tours in Iraq alongside U.S. military</li>
+                        <li>Worked on Iraq policy for National Security Council</li>
+                        <li>Acting Assistant Secretary of Defense under Obama</li>
+                        <li>Briefed Presidents on most sensitive national security matters</li>
+                        <li>Served under both Bush and Obama administrations</li>
+                    </ul>
+                </div>
+
+                <div class="hero-card">
+                    <h3>Rep. Jason Crow</h3>
+                    <p class="title">Colorado • Army Ranger • Bronze Star Recipient</p>
+                    <div class="service">3 Combat Tours • 82nd Airborne & 75th Rangers</div>
+                    <ul>
+                        <li>Led paratroopers during 2003 invasion of Iraq</li>
+                        <li>Awarded Bronze Star for combat leadership</li>
+                        <li>Joined elite 75th Ranger Regiment for Afghanistan</li>
+                        <li>Part of task force hunting Osama Bin Laden</li>
+                        <li>Fought Haqqani Network along Pakistan border</li>
+                        <li>Led over 100 combat missions in Iraq and Afghanistan</li>
+                    </ul>
+                </div>
+
+                <div class="hero-card">
+                    <h3>Rep. Chris Deluzio</h3>
+                    <p class="title">Pennsylvania • U.S. Navy Officer • Iraq Veteran</p>
+                    <div class="service">U.S. Naval Academy Graduate • 3 Deployments</div>
+                    <ul>
+                        <li>U.S. Naval Academy graduate, commissioned 2006</li>
+                        <li>Surface Warfare Officer with three deployments</li>
+                        <li>Served as Army Civil Affairs Officer in Iraq</li>
+                        <li>Led Civil Affairs support for Special Forces missions</li>
+                        <li>Now voting rights attorney protecting democracy</li>
+                        <li>Told FBI he won't be intimidated into silence</li>
+                    </ul>
+                </div>
+
+                <div class="hero-card">
+                    <h3>Rep. Chrissy Houlahan</h3>
+                    <p class="title">Pennsylvania • U.S. Air Force Captain • Engineer</p>
+                    <div class="service">Air Force Officer • 13 Years Total Service</div>
+                    <ul>
+                        <li>Stanford engineering graduate with Air Force ROTC scholarship</li>
+                        <li>MIT master's degree in Technology and Policy</li>
+                        <li>Served as Air Force project manager on defense technologies</li>
+                        <li>Retired as Captain after 13 years of service</li>
+                        <li>Third-generation military veteran</li>
+                        <li>First woman to represent PA-6 in Congress</li>
+                    </ul>
+                </div>
+
+                <div class="hero-card">
+                    <h3>Rep. Maggie Goodlander</h3>
+                    <p class="title">New Hampshire • Navy Intelligence Officer • Supreme Court Clerk</p>
+                    <div class="service">Navy Reserve Intelligence • 11 Years Service</div>
+                    <ul>
+                        <li>Navy Reserve intelligence officer for over a decade</li>
+                        <li>Foreign policy advisor to Senators McCain and Lieberman</li>
+                        <li>Yale graduate with Middle East research experience</li>
+                        <li>Law clerk to Justice Stephen Breyer</li>
+                        <li>Led Biden's Unity Agenda at White House</li>
+                        <li>Helped form first Democratic Veterans Caucus</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>What They Did: A Message of Duty and Honor</h2>
+            
+            <p style="font-size: 1.1em; margin-bottom: 25px;">
+                On November 19, 2024, these six lawmakers released a 60-second video titled 
+                "Don't Give Up the Ship" — a reference to Captain James Lawrence's famous last 
+                command during the War of 1812.
+            </p>
+            
+            <p style="font-size: 1.1em; margin-bottom: 25px;">
+                Their message was simple, factual, and taught at every military installation 
+                in America: <strong>service members can and must refuse illegal orders.</strong> 
+                This is not radical. It's not seditious. It's the law under the Uniform Code 
+                of Military Justice and their sacred duty.
+            </p>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <p class="timeline-date">November 19, 2024</p>
+                    <p>Video released reminding troops of their constitutional duty</p>
+                </div>
+                <div class="timeline-item">
+                    <p class="timeline-date">November 20, 2024</p>
+                    <p><strong>Trump:</strong> Posts on social media calling them "traitors" guilty of "SEDITIOUS BEHAVIOR, punishable by DEATH"</p>
+                </div>
+                <div class="timeline-item">
+                    <p class="timeline-date">November 21, 2024</p>
+                    <p><strong>Pete Hegseth:</strong> The unqualified Fox News host turned Defense Secretary declares their constitutional reminder a violation of UCMJ and Congressional authority. Threatens to recall officers and mess with their pensions. Specifically targets Senator Mark Kelly for investigation.</p>
+                </div>
+                <div class="timeline-item">
+                    <p class="timeline-date">November 26, 2024</p>
+                    <p><strong>Kash Patel:</strong> The Qatari asset turns FBI onto The Honorable Six, requesting interviews with all six lawmakers</p>
+                </div>
+                <div class="timeline-item">
+                    <p class="timeline-date">December 2024</p>
+                    <p><strong>Kristi Noem:</strong> Allows ICE to target House of Representatives, creating intimidation campaign against lawmakers</p>
+                </div>
+                <div class="timeline-item">
+                    <p class="timeline-date">Ongoing</p>
+                    <p>All six face death threats and continued harassment from <a class="attacker-link" onclick="showAttackers()">compromised officials</a> but remain unbowed in their duty</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Why They Spoke Up</h2>
+            
+            <p style="font-size: 1.1em; margin-bottom: 20px;">
+                These lawmakers were responding to serious concerns from service members about 
+                potentially illegal military actions:
+            </p>
+            
+            <ul style="margin: 20px 0 20px 40px; font-size: 1.05em; line-height: 2;">
+                <li><strong>Caribbean Strikes:</strong> U.S. military operations that have killed 
+                dozens of people in strikes on suspected drug boats — with serious legal questions 
+                about proper authorization and identification of targets</li>
+                <li><strong>Domestic Military Deployments:</strong> National Guard deployed to American 
+                cities despite legal challenges and gubernatorial objections</li>
+                <li><strong>Military Lawyers Overruled:</strong> Senior military lawyers expressing 
+                legal concerns being overruled by <a class="attacker-link" onclick="showAttackers()">political appointees with foreign ties</a></li>
+                <li><strong>Troops Seeking Guidance:</strong> Service members contacted these lawmakers 
+                expressing concerns about orders they feared might violate the law</li>
+            </ul>
+            
+            <p style="font-size: 1.1em; margin-top: 25px;">
+                As Senator Slotkin explained: "It wasn't that there was any one incident; it was 
+                the sheer number of people coming to us and saying, 'I'm worried...I'm concerned 
+                I'm going to be asked to do something that I don't know if I should do.'"
+            </p>
+        </div>
+
+        <div class="manifesto">
+            <h2>What the Law Says</h2>
+            <p style="font-size: 1.15em; margin-bottom: 25px;">
+                The Uniform Code of Military Justice is clear: service members not only CAN 
+                refuse illegal orders, they MUST refuse them.
+            </p>
+            <p style="font-size: 1.15em; margin-bottom: 25px;">
+                An order is illegal if it violates the Constitution, federal law, or international 
+                law. Following an illegal order does not absolve a service member of responsibility 
+                — "I was just following orders" has never been an acceptable defense.
+            </p>
+            <p style="font-size: 1.3em; font-weight: bold; text-align: center; margin-top: 30px;">
+                These six lawmakers reminded troops of what they already learned in basic training.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>The Real Plot: American Traitors Seeking a Crown</h2>
+            
+            <p style="font-size: 1.2em; margin-bottom: 25px; font-weight: bold;">
+                This isn't just foreign influence. This is a coordinated plot by American traitors 
+                who have sold out to Qatar, Russia, and the UAE to destroy our constitutional republic 
+                and install a king.
+            </p>
+            
+            <p style="font-size: 1.1em; margin-bottom: 20px;">
+                At first, it looked like Russian interference. But the truth is darker: American 
+                citizens in positions of power have betrayed their country, accepted money and support 
+                from foreign adversaries, and are now attempting to overthrow our constitutional system 
+                to establish an authoritarian regime.
+            </p>
+
+            <h3 style="color: #8b0000; margin-top: 30px;">Why They Attack The Honorable Six</h3>
+            <p style="font-size: 1.1em; margin-bottom: 20px;">
+                The Honorable Six represent everything these traitors fear: decorated veterans who 
+                remind service members that their oath is to the <strong>Constitution</strong>, not 
+                to any wannabe king. If the military remembers their duty to refuse illegal orders, 
+                the entire plot collapses.
+            </p>
+
+            <p style="font-size: 1.1em; margin-bottom: 20px;">
+                That's why Trump threatens them with death. That's why Hegseth targets their pensions. 
+                That's why Patel turns the FBI on them. That's why Noem sends ICE after Congress itself.
+            </p>
+
+            <p style="font-size: 1.15em; margin: 25px 0; padding: 25px; background: #fff3cd; border-radius: 5px; font-weight: bold;">
+                They need the military to follow illegal orders. They need ICE to act as their personal 
+                kidnapping force. They need Americans too terrified to resist.
+            </p>
+
+            <h3 style="color: #8b0000; margin-top: 30px;">ICE: Unqualified Domestic Terrorists</h3>
+            <p style="font-size: 1.1em; margin-bottom: 20px;">
+                Under Noem's direction, ICE has been transformed into a force of domestic terrorism. 
+                Mass deportations without due process. Kidnapping people off the streets. Targeting 
+                the House of Representatives itself to intimidate lawmakers.
+            </p>
+
+            <p style="font-size: 1.1em; margin-bottom: 20px;">
+                These are not qualified law enforcement officers upholding the Constitution. These 
+                are unqualified thugs carrying out illegal orders to terrorize communities and 
+                consolidate authoritarian power. People are being killed fleeing these kidnappers 
+                who operate with no accountability and no respect for law.
+            </p>
+
+            <h3 style="color: #8b0000; margin-top: 30px;">We Will Not Bow</h3>
+            <p style="font-size: 1.2em; margin-bottom: 20px; font-weight: bold;">
+                We will not bow to a traitor wannabe king.
+            </p>
+            <p style="font-size: 1.2em; margin-bottom: 20px; font-weight: bold;">
+                We will not bow to his foreign-compromised minions.
+            </p>
+            <p style="font-size: 1.2em; margin-bottom: 20px; font-weight: bold;">
+                We will not sit quietly while people are killed by unqualified domestic terrorists 
+                masquerading as ICE agents.
+            </p>
+
+            <p style="font-size: 1.15em; margin-top: 30px; padding: 25px; background: #f0f4f8; border-radius: 5px;">
+                The Honorable Six stand as proof that there are still Americans in power who remember 
+                their oath. Who refuse to bend the knee. Who will face death threats, FBI investigations, 
+                and coordinated attacks rather than betray the Constitution.
+            </p>
+
+            <p style="font-size: 1.2em; margin-top: 25px; text-align: center; font-weight: bold;">
+                If they can stand strong, so can we.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>Standing Strong for America</h2>
+            
+            <p style="font-size: 1.1em; margin-bottom: 25px;">
+                Despite investigations, threats, and <a class="attacker-link" onclick="showAttackers()">attacks from compromised officials</a>, the Honorable Six remain steadfast 
+                in their duty to the Constitution.
+            </p>
+            
+            <p style="font-size: 1.05em; margin: 20px 0; padding: 20px; background: #f0f4f8; border-radius: 5px;">
+                <strong>Rep. Chris Deluzio's Response to FBI:</strong> "I will continue to speak 
+                out when I believe something is wrong, and I will not be intimidated into silence 
+                by anyone — no matter who they are or what position they hold."
+            </p>
+
+            <p style="font-size: 1.1em; margin-top: 25px;">
+                These are not the words of traitors. These are the words of patriots who understand 
+                that true loyalty to America means loyalty to the Constitution, not to any individual.
+            </p>
+        </div>
+
+        <div class="cta">
+            <h2>Stand With The Honorable Six</h2>
+            <p>
+                They served in combat. They risked their lives. They took an oath.
+            </p>
+            <p>
+                Now they're being persecuted for upholding that oath.
+            </p>
+            <p style="margin-top: 25px; font-size: 1.4em;">
+                <strong>Support lawmakers who defend the Constitution.</strong>
+            </p>
+        </div>
+
+        <footer>
+            <p style="font-size: 1.2em; margin-bottom: 15px;">
+                <strong>"I do solemnly swear that I will support and defend the Constitution 
+                of the United States against all enemies, foreign and domestic."</strong>
+            </p>
+            <p style="margin-top: 20px; font-size: 1.1em;">
+                The Honorable Six are keeping that oath.
+            </p>
+            <p style="margin-top: 10px;">
+                That makes them American patriots.
+            </p>
+        </footer>
+    </div>
+
+    <!-- Attacker Modal -->
+    <div id="attackerModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <h2>The Real Traitors: Compromised Officials with Foreign Ties</h2>
+            </div>
+            <div class="modal-body">
+                <p style="font-size: 1.1em; margin-bottom: 25px; font-weight: bold;">
+                    These are the individuals attacking the Honorable Six — all with documented ties to foreign adversaries and interests:
+                </p>
+
+                <div class="traitor-card">
+                    <h3>Donald Trump</h3>
+                    <p class="position">President</p>
+                    <ul>
+                        <li><strong>Russia:</strong> Extensive business dealings, praised Putin repeatedly, secret meetings</li>
+                        <li><strong>Qatar:</strong> Qatari government bailed out his 666 Fifth Avenue building debt</li>
+                        <li><strong>UAE:</strong> Business partnerships and financial dealings</li>
+                        <li><strong>Jeffrey Epstein:</strong> Long friendship with convicted sex trafficker, flew on his plane, partied together for years</li>
+                        <li><strong>Tech Bros:</strong> Protected and enabled abusers in Silicon Valley circles</li>
+                    </ul>
+                </div>
+
+                <div class="traitor-card">
+                    <h3>JD Vance</h3>
+                    <p class="position">Vice President</p>
+                    <ul>
+                        <li><strong>Russia:</strong> Opposed aid to Ukraine, echoes Kremlin talking points</li>
+                        <li><strong>Qatar:</strong> Financial backing from Middle Eastern sources</li>
+                        <li><strong>Tech Bros:</strong> Funded by Peter Thiel and Silicon Valley oligarchs with histories of abuse and misconduct</li>
+                        <li><strong>UAE:</strong> Business connections through venture capital</li>
+                    </ul>
+                </div>
+
+                <div class="traitor-card">
+                    <h3>Kash Patel</h3>
+                    <p class="position">FBI Director</p>
+                    <ul>
+                        <li><strong>Qatar:</strong> Worked as foreign agent for Qatar, represented Qatari interests</li>
+                        <li><strong>Business Ties:</strong> Financial consulting for Qatari entities before appointment</li>
+                        <li><strong>Loyalty:</strong> Pledged personal loyalty to Trump over Constitution</li>
+                    </ul>
+                </div>
+
+                <div class="traitor-card">
+                    <h3>Pam Bondi</h3>
+                    <p class="position">Attorney General</p>
+                    <ul>
+                        <li><strong>Qatar:</strong> Lobbied for Qatar after leaving office, represented Qatari government</li>
+                        <li><strong>Corruption:</strong> Took $25,000 from Trump Foundation then dropped Trump University investigation</li>
+                        <li><strong>Foreign Agent:</strong> Registered foreign agent for Qatari interests</li>
+                    </ul>
+                </div>
+
+                <div class="traitor-card">
+                    <h3>Pete Hegseth</h3>
+                    <p class="position">Secretary of Defense</p>
+                    <ul>
+                        <li><strong>Russia:</strong> Parroted Russian propaganda, opposed support for Ukraine</li>
+                        <li><strong>Misconduct:</strong> Multiple allegations of sexual assault and financial impropriety</li>
+                        <li><strong>Unqualified:</strong> Fox News host with no command experience leading the Pentagon</li>
+                        <li><strong>Hypocrisy:</strong> In 2016 said military won't follow unlawful orders under Democrats, now calls it sedition</li>
+                    </ul>
+                </div>
+
+                <div class="traitor-card">
+                    <h3>Kristi Noem</h3>
+                    <p class="position">Secretary of Homeland Security</p>
+                    <ul>
+                        <li><strong>Russia:</strong> Connections to Russian interests, soft on Russian threats</li>
+                        <li><strong>Corruption:</strong> Used state resources for personal benefit</li>
+                        <li><strong>Unfit:</strong> No national security experience, failed upward through political connections</li>
+                    </ul>
+                </div>
+
+                <p style="margin-top: 30px; font-size: 1.15em; font-weight: bold; padding: 20px; background: #fff3cd; border-radius: 5px;">
+                    These compromised officials — with ties to Qatar, Russia, UAE, Epstein, and abusive tech oligarchs — 
+                    are calling patriotic American veterans "traitors" for upholding the Constitution.
+                </p>
+
+                <p style="margin-top: 20px; font-size: 1.1em; text-align: center;">
+                    <strong>Who are the real traitors?</strong>
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
