@@ -16,6 +16,52 @@
             line-height: 1.8;
             color: #1a1a1a;
             background: #f5f5f5;
+            padding-top: 80px;
+        }
+        
+        .sticky-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: #003366;
+            padding: 15px 20px;
+            z-index: 999;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .sticky-btn {
+            background: #c41e3a;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.95em;
+            border: 2px solid #8b0000;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        .sticky-btn:hover {
+            background: #8b0000;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+        
+        .sticky-btn.coming-soon {
+            background: #666;
+            border-color: #444;
+            cursor: not-allowed;
+        }
+        
+        .sticky-btn.coming-soon:hover {
+            background: #666;
+            transform: none;
         }
         
         .container {
@@ -317,6 +363,25 @@
     </script>
 </head>
 <body>
+    <!-- Sticky Header -->
+    <div class="sticky-header">
+        <a href="https://youtube.com/shorts/Fk9Gh3qwW4I?si=oXdIV08oOqOnm8bo" target="_blank" class="sticky-btn">
+            "Don't Give Up the Ship"
+        </a>
+        <a href="#honorable-six" class="sticky-btn">
+            Support the Six
+        </a>
+        <a href="https://buymeacoffee.com/zresearch" target="_blank" class="sticky-btn">
+            Support the Researcher
+        </a>
+        <a href="https://www.gutenberg.org/cache/epub/5/pg5-images.html" target="_blank" class="sticky-btn">
+            Constitution
+        </a>
+        <a href="https://www.gutenberg.org/files/1404/1404-h/1404-h.htm#link2H_4_0067" target="_blank" class="sticky-btn">
+            Federalist No. 67-69
+        </a>
+    </div>
+
     <div class="container">
         <header>
             <h1>The Honorable Six</h1>
@@ -348,7 +413,7 @@
             </p>
         </div>
 
-        <div class="section">
+        <div class="section" id="honorable-six">
             <h2>The Honorable Six: American Patriots</h2>
             <p style="font-size: 1.1em; margin-bottom: 30px;">
                 They come from different branches of service. Different states. Different backgrounds. 
@@ -368,6 +433,7 @@
                         <li>Part of first twin astronauts in NASA history</li>
                         <li>A man's man and American hero through and through</li>
                     </ul>
+                    <a href="https://www.markkelly.com/" target="_blank" style="display: block; margin-top: 15px; padding: 10px; background: #c41e3a; color: white; text-align: center; border-radius: 5px; text-decoration: none; font-weight: bold;">Support Senator Kelly</a>
                 </div>
 
                 <div class="hero-card">
@@ -382,6 +448,7 @@
                         <li>Briefed Presidents on most sensitive national security matters</li>
                         <li>Served under both Bush and Obama administrations</li>
                     </ul>
+                    <a href="https://elissaslotkin.org/" target="_blank" style="display: block; margin-top: 15px; padding: 10px; background: #c41e3a; color: white; text-align: center; border-radius: 5px; text-decoration: none; font-weight: bold;">Support Senator Slotkin</a>
                 </div>
 
                 <div class="hero-card">
@@ -396,6 +463,7 @@
                         <li>Fought Haqqani Network along Pakistan border</li>
                         <li>Led over 100 combat missions in Iraq and Afghanistan</li>
                     </ul>
+                    <a href="https://crow.house.gov/" target="_blank" style="display: block; margin-top: 15px; padding: 10px; background: #c41e3a; color: white; text-align: center; border-radius: 5px; text-decoration: none; font-weight: bold;">Support Rep. Crow</a>
                 </div>
 
                 <div class="hero-card">
@@ -410,6 +478,7 @@
                         <li>Now voting rights attorney protecting democracy</li>
                         <li>Told FBI he won't be intimidated into silence</li>
                     </ul>
+                    <a href="https://chrisforpa.com/" target="_blank" style="display: block; margin-top: 15px; padding: 10px; background: #c41e3a; color: white; text-align: center; border-radius: 5px; text-decoration: none; font-weight: bold;">Support Rep. Deluzio</a>
                 </div>
 
                 <div class="hero-card">
@@ -424,6 +493,7 @@
                         <li>Third-generation military veteran</li>
                         <li>First woman to represent PA-6 in Congress</li>
                     </ul>
+                    <a href="https://www.chrissyhoulahanforcongress.com/" target="_blank" style="display: block; margin-top: 15px; padding: 10px; background: #c41e3a; color: white; text-align: center; border-radius: 5px; text-decoration: none; font-weight: bold;">Support Rep. Houlahan</a>
                 </div>
 
                 <div class="hero-card">
@@ -438,6 +508,7 @@
                         <li>Led Biden's Unity Agenda at White House</li>
                         <li>Helped form first Democratic Veterans Caucus</li>
                     </ul>
+                    <a href="https://maggiefornh.com/" target="_blank" style="display: block; margin-top: 15px; padding: 10px; background: #c41e3a; color: white; text-align: center; border-radius: 5px; text-decoration: none; font-weight: bold;">Support Rep. Goodlander</a>
                 </div>
             </div>
         </div>
@@ -446,7 +517,7 @@
             <h2>What They Did: A Message of Duty and Honor</h2>
             
             <p style="font-size: 1.1em; margin-bottom: 25px;">
-                On November 19, 2024, these six lawmakers released a 60-second video titled 
+                On November 19, 2024, these six lawmakers released a 90-second video titled 
                 "Don't Give Up the Ship" — a reference to Captain James Lawrence's famous last 
                 command during the War of 1812.
             </p>
@@ -644,6 +715,31 @@
             <p style="margin-top: 10px;">
                 That makes them American patriots.
             </p>
+            
+            <div style="margin-top: 40px; padding: 30px 0; border-top: 2px solid #c41e3a;">
+                <p style="font-size: 1.1em; font-weight: bold; margin-bottom: 20px;">
+                    Remember:
+                </p>
+                <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 30px;">
+                    <a href="https://youtube.com/shorts/hIcYkHZL01U?si=-le_6ZIM2UfkSYdX" target="_blank" style="color: #c41e3a; text-decoration: none; font-weight: bold; font-size: 1.05em;">
+                        📺 The Fifth Day (Rewritten)
+                    </a>
+                    <span style="color: #ccc;">|</span>
+                    <a href="https://apps.npr.org/jan-6-archive/database.html" target="_blank" style="color: #c41e3a; text-decoration: none; font-weight: bold; font-size: 1.05em;">
+                        📋 Jan. 6th 2021 Insurrection Archive
+                    </a>
+                </div>
+            </div>
+            
+            <div style="padding-top: 30px; border-top: 2px solid #c41e3a;">
+                <p style="font-size: 0.95em; font-style: italic; color: #666;">
+                    Paid for and built by a U.S. Navy Veteran (1998-2001) still upholding her oath.
+                </p>
+                <p style="font-size: 0.9em; font-style: italic; color: #666; margin-top: 10px;">
+                    Not authorized by any candidate or candidate's committee. This message is supported 
+                    by Americans who refuse to bow to traitors.
+                </p>
+            </div>
         </footer>
     </div>
 
@@ -663,11 +759,13 @@
                     <h3>Donald Trump</h3>
                     <p class="position">President</p>
                     <ul>
+                        <li><strong>No Military Service:</strong> Bone spurs draft dodger who never served</li>
                         <li><strong>Russia:</strong> Extensive business dealings, praised Putin repeatedly, secret meetings</li>
                         <li><strong>Qatar:</strong> Qatari government bailed out his 666 Fifth Avenue building debt</li>
                         <li><strong>UAE:</strong> Business partnerships and financial dealings</li>
                         <li><strong>Jeffrey Epstein:</strong> Long friendship with convicted sex trafficker, flew on his plane, partied together for years</li>
-                        <li><strong>Tech Bros:</strong> Protected and enabled abusers in Silicon Valley circles</li>
+                        <li><strong>Womanizer:</strong> Multiple affairs, Access Hollywood tape, 26+ sexual assault accusations</li>
+                        <li><strong>Constitution:</strong> Calls it an "inconvenience," doesn't understand basic civics</li>
                     </ul>
                 </div>
 
@@ -675,10 +773,12 @@
                     <h3>JD Vance</h3>
                     <p class="position">Vice President</p>
                     <ul>
+                        <li><strong>No Combat Service:</strong> Military public affairs, never saw combat</li>
                         <li><strong>Russia:</strong> Opposed aid to Ukraine, echoes Kremlin talking points</li>
                         <li><strong>Qatar:</strong> Financial backing from Middle Eastern sources</li>
                         <li><strong>Tech Bros:</strong> Funded by Peter Thiel and Silicon Valley oligarchs with histories of abuse and misconduct</li>
                         <li><strong>UAE:</strong> Business connections through venture capital</li>
+                        <li><strong>Constitution:</strong> Advocates for authoritarian power, dismisses constitutional limits</li>
                     </ul>
                 </div>
 
@@ -686,9 +786,11 @@
                     <h3>Kash Patel</h3>
                     <p class="position">FBI Director</p>
                     <ul>
-                        <li><strong>Qatar:</strong> Worked as foreign agent for Qatar, represented Qatari interests</li>
+                        <li><strong>No Military Service:</strong> Never served in uniform</li>
+                        <li><strong>Foreign Agent:</strong> Worked as foreign agent for Qatar, represented Qatari interests</li>
                         <li><strong>Business Ties:</strong> Financial consulting for Qatari entities before appointment</li>
                         <li><strong>Loyalty:</strong> Pledged personal loyalty to Trump over Constitution</li>
+                        <li><strong>Constitution:</strong> Views it as obstacle to Trump's power</li>
                     </ul>
                 </div>
 
@@ -696,9 +798,10 @@
                     <h3>Pam Bondi</h3>
                     <p class="position">Attorney General</p>
                     <ul>
-                        <li><strong>Qatar:</strong> Lobbied for Qatar after leaving office, represented Qatari government</li>
+                        <li><strong>No Military Service:</strong> Never served</li>
+                        <li><strong>Foreign Agent:</strong> Lobbied for Qatar after leaving office, represented Qatari government</li>
                         <li><strong>Corruption:</strong> Took $25,000 from Trump Foundation then dropped Trump University investigation</li>
-                        <li><strong>Foreign Agent:</strong> Registered foreign agent for Qatari interests</li>
+                        <li><strong>Constitution:</strong> Weaponizes law for political revenge instead of upholding justice</li>
                     </ul>
                 </div>
 
@@ -706,10 +809,13 @@
                     <h3>Pete Hegseth</h3>
                     <p class="position">Secretary of Defense</p>
                     <ul>
+                        <li><strong>No Command Experience:</strong> Never commanded troops in combat</li>
                         <li><strong>Russia:</strong> Parroted Russian propaganda, opposed support for Ukraine</li>
-                        <li><strong>Misconduct:</strong> Multiple allegations of sexual assault and financial impropriety</li>
-                        <li><strong>Unqualified:</strong> Fox News host with no command experience leading the Pentagon</li>
+                        <li><strong>Sexual Misconduct:</strong> Multiple allegations of sexual assault, paid off accuser</li>
+                        <li><strong>Alcohol Abuse:</strong> History of drinking problems and misconduct</li>
+                        <li><strong>Unqualified:</strong> Fox News host with no leadership experience running the Pentagon</li>
                         <li><strong>Hypocrisy:</strong> In 2016 said military won't follow unlawful orders under Democrats, now calls it sedition</li>
+                        <li><strong>Constitution:</strong> Threatens to punish officers who uphold their constitutional duty</li>
                     </ul>
                 </div>
 
@@ -717,15 +823,45 @@
                     <h3>Kristi Noem</h3>
                     <p class="position">Secretary of Homeland Security</p>
                     <ul>
+                        <li><strong>No Military Service:</strong> Never served</li>
+                        <li><strong>No National Security Experience:</strong> State governor with zero qualifications</li>
                         <li><strong>Russia:</strong> Connections to Russian interests, soft on Russian threats</li>
-                        <li><strong>Corruption:</strong> Used state resources for personal benefit</li>
-                        <li><strong>Unfit:</strong> No national security experience, failed upward through political connections</li>
+                        <li><strong>Corruption:</strong> Used state resources for personal benefit, affair with Corey Lewandowski</li>
+                        <li><strong>Abuser:</strong> Bragged about killing her own dog to appear "tough"</li>
+                        <li><strong>Constitution:</strong> Turned ICE into domestic terrorists targeting Congress itself</li>
                     </ul>
                 </div>
 
+                <div class="traitor-card" style="border-left-color: #000; background: #f0f0f0;">
+                    <h3>Jeffrey Epstein</h3>
+                    <p class="position">Convicted Sex Trafficker (Died 2019 in Federal Custody)</p>
+                    <ul>
+                        <li><strong>The Original Traitor:</strong> Compromised American officials through sex trafficking and blackmail</li>
+                        <li><strong>Trump Connection:</strong> Decades-long friendship, partied together, flew together, socialized extensively</li>
+                        <li><strong>Foreign Intelligence:</strong> Documented connections suggesting work with foreign intelligence services</li>
+                        <li><strong>Blackmail Network:</strong> Built empire on compromising powerful Americans with underage victims</li>
+                        <li><strong>Died Under Trump's DOJ:</strong> Suspicious death in federal custody under Bill Barr's watch (2019)</li>
+                        <li><strong>Coverup Continues:</strong> Pam Bondi refuses legal mandate to release files; released documents heavily redacted, many blank pages</li>
+                        <li><strong>Files Missing:</strong> Reports suggest Epstein files turning up in Dubai auctions - foreign powers have the blackmail material</li>
+                    </ul>
+                    <p style="margin-top: 15px; font-weight: bold; color: #8b0000;">
+                        Epstein is dead, but the people he compromised are now in power - and they're protecting his secrets because they're IN those secrets.
+                    </p>
+                </div>
+
                 <p style="margin-top: 30px; font-size: 1.15em; font-weight: bold; padding: 20px; background: #fff3cd; border-radius: 5px;">
-                    These compromised officials — with ties to Qatar, Russia, UAE, Epstein, and abusive tech oligarchs — 
-                    are calling patriotic American veterans "traitors" for upholding the Constitution.
+                    These compromised officials — draft dodgers, foreign agents, womanizers, abusers, and partiers with zero respect for the Constitution — 
+                    are calling decorated combat veterans who served with honor "traitors" for upholding the oath they themselves never took or have betrayed.
+                </p>
+
+                <p style="margin-top: 20px; font-size: 1.15em; padding: 20px; background: #ffe6e6; border-radius: 5px; border-left: 5px solid #8b0000;">
+                    <strong>The Epstein Connection:</strong> Trump partied with Epstein for decades. Pam Bondi is hiding the files. 
+                    They attack the Honorable Six while protecting a dead pedophile's secrets. Why? Because they're compromised by those same secrets.
+                </p>
+
+                <p style="margin-top: 20px; font-size: 1.2em; text-align: center; font-weight: bold; color: #8b0000;">
+                    The Honorable Six: Combat veterans, astronauts, intelligence officers who served with honor.<br>
+                    The Traitors: Draft dodgers, foreign agents, abusers who never gave a damn about the Constitution.
                 </p>
 
                 <p style="margin-top: 20px; font-size: 1.1em; text-align: center;">
