@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DO NOT PUSH THE BUTTON - Ultimate Edition</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Courier New', monospace;
+        }
+        
+        body {
+            background: linear-gradient(45deg, #1a1a1a, #0a0a0a);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            color: #ff4444;
+            text-align: center;
+            overflow: hidden;
+            transition: background 1s ease;
+        }
+        
+        .warning {
+            font-size: clamp(1.2rem, 5vw, 1.8rem);
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 0 0 10px #ff0000;
+            animation: pulse 2s infinite;
+            transition: all 0.5s ease;
+        }
+        
+        .container {
+            position: relative;
+            margin: 30px 0;
+        }
+        
+        .button {
+            width: clamp(180px, 50vw, 250px);
+            height: clamp(180px, 50vw, 250px);
+            background: radial-gradient(circle at 30% 30%, #ff0000, #990000);
+            border-radius: 50%;
+            border: 10px solid #660000;
+            box-shadow: 
+                0 0 30px rgba(255, 0, 0, 0.5),
+                inset 0 0 40px rgba(0, 0, 0, 0.5),
+                0 20px 50px rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            user-select: none;
+            transition: all 0.1s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .button.escaping {
+            animation: button-escape 2s ease-in-out infinite;
+        }
+        
+        .button::before {
+            content: '';
+            position: absolute;
+            top: 10%;
+            left: 10%;
+            width: 30%;
+            height: 30%;
+            background: radial-gradient(circle, rgba(255,255,255,0.3), transparent);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        
+        .button:hover {
+            transform: scale(1.05) translateY(-2px);
+            box-shadow: 
+                0 0 50px rgba(255, 0, 0, 0.8),
+                inset 0 0 30px rgba(0, 0, 0, 0.3),
+                0 25px 60px rgba(0, 0, 0, 0.8);
+        }
+        
+        .button:active {
+            transform: scale(0.95) translateY(5px);
+            background: radial-gradient(circle at 30% 30%, #cc0000, #660000);
+            box-shadow: 
+                0 0 20px rgba(255, 0, 0, 0.3),
+                inset 0 0 50px rgba(0, 0, 0, 0.7),
+                0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        
+        .button-text {
+            color: white;
+            font-size: clamp(1rem, 4vw, 1.8rem);
+            font-weight: bold;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .comment-box {
+            min-height: 100px;
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(20, 20, 20, 0.9);
+            border: 2px solid #ff4444;
+            border-radius: 15px;
+            max-width: 600px;
+            width: 90%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 20px rgba(255, 68, 68, 0.3);
+            backdrop-filter: blur(10px);
+        }
+        
+        .snarky-comment {
+            font-size: clamp(1rem, 4vw, 1.4rem);
+            color: #ffcc00;
+            text-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            line-height: 1.4;
+        }
+        
+        .snarky-comment.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .counter {
+            font-size: clamp(1rem, 4vw, 1.5rem);
+            margin: 20px 0;
+            color: #00ccff;
+            text-shadow: 0 0 5px rgba(0, 204, 255, 0.5);
+        }
+        
+        .press-counter {
+            font-size: clamp(1.5rem, 5vw, 2rem);
+            font-weight: bold;
+            color: #00ff88;
+            text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+        
+        .press-counter.bump {
+            transform: scale(1.3);
+            color: #ff00ff;
+        }
+        
+        .danger-lights {
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+        }
+        
+        .light {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: #333;
+            animation: light-blink 2s infinite;
+            box-shadow: 0 0 5px rgba(255, 0, 0, 0.3);
+        }
+        
+        .danger-text {
+            font-size: clamp(0.8rem, 3vw, 1rem);
+            color: #ff6666;
+            margin-top: 10px;
+            letter-spacing: 2px;
+            animation: fade-pulse 3s infinite;
+        }
+        
+        .reset-button {
+            margin-top: 30px;
+            padding: 15px 30px;
+            background: rgba(102, 0, 0, 0.8);
+            border: 2px solid #ff4444;
+            color: #ff6666;
+            font-size: 1rem;
+            font-family: 'Courier New', monospace;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        .reset-button.show {
+            opacity: 1;
+            pointer-events: all;
+        }
+        
+        .reset-button:hover {
+            background: rgba(153, 0, 0, 0.9);
+            border-color: #ff6666;
+            color: #ffcc00;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 68, 68, 0.4);
+        }
+        
+        .achievement {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 25px;
+            background: rgba(0, 150, 0, 0.95);
+            border: 2px solid #00ff00;
+            border-radius: 10px;
+            color: white;
+            font-size: 1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transform: translateX(400px);
+            transition: all 0.5s ease;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+            z-index: 1000;
+            max-width: 300px;
+        }
+        
+        .achievement.show {
+            transform: translateX(0);
+        }
+        
+        .leaderboard {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 20px;
+            background: rgba(20, 20, 20, 0.95);
+            border: 2px solid #ffcc00;
+            border-radius: 10px;
+            color: #ffcc00;
+            font-size: 0.9rem;
+            max-width: 250px;
+            text-align: left;
+            box-shadow: 0 0 20px rgba(255, 204, 0, 0.3);
+            backdrop-filter: blur(10px);
+        }
+        
+        .leaderboard h3 {
+            margin-bottom: 10px;
+            text-align: center;
+            color: #ff6666;
+            font-size: 1.1rem;
+        }
+        
+        .leaderboard-item {
+            padding: 5px 0;
+            border-bottom: 1px solid rgba(255, 204, 0, 0.3);
+        }
+        
+        .leaderboard-item:last-child {
+            border-bottom: none;
+        }
+        
+        .screen-shake {
+            animation: screen-shake 0.5s;
+        }
+        
+        .easter-egg {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            padding: 15px 25px;
+            background: rgba(128, 0, 128, 0.95);
+            border: 2px solid #ff00ff;
+            border-radius: 10px;
+            color: white;
+            font-size: 1rem;
+            transition: all 0.5s ease;
+            box-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
+            z-index: 1000;
+        }
+        
+        .easter-egg.show {
+            transform: translateX(-50%) translateY(0);
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.05); }
+        }
+        
+        @keyframes light-blink {
+            0%, 45%, 55%, 100% { 
+                background: #ff0000; 
+                box-shadow: 0 0 15px #ff0000; 
+            }
+            50% { 
+                background: #330000; 
+                box-shadow: 0 0 5px rgba(255, 0, 0, 0.2); 
+            }
+        }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(0) rotate(0deg); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-10px) rotate(-2deg); }
+            20%, 40%, 60%, 80% { transform: translateX(10px) rotate(2deg); }
+        }
+        
+        @keyframes screen-shake {
+            0%, 100% { transform: translate(0, 0); }
+            10%, 30%, 50%, 70%, 90% { transform: translate(-5px, -5px); }
+            20%, 40%, 60%, 80% { transform: translate(5px, 5px); }
+        }
+        
+        @keyframes fade-pulse {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+        
+        @keyframes button-escape {
+            0%, 100% { transform: translate(0, 0); }
+            25% { transform: translate(-20px, -20px); }
+            50% { transform: translate(20px, 20px); }
+            75% { transform: translate(-20px, 20px); }
+        }
+        
+        .shake {
+            animation: shake 0.5s;
+        }
+        
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            pointer-events: none;
+            z-index: 999;
+        }
+        
+        @keyframes confetti-fall {
+            to {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        .audio-indicator {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            font-size: 2rem;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .audio-indicator.show {
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .leaderboard {
+                font-size: 0.75rem;
+                padding: 15px;
+                max-width: 180px;
+            }
+            .achievement {
+                font-size: 0.85rem;
+                max-width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="achievement" id="achievement"></div>
+    <div class="easter-egg" id="easterEgg"></div>
+    <div class="audio-indicator" id="audioIndicator">🔊</div>
+    
+    <div class="leaderboard">
+        <h3>Hall of Shame</h3>
+        <div class="leaderboard-item">🥇 Most Presses: <span id="record">0</span></div>
+        <div class="leaderboard-item">⚡ Speed Record: <span id="speedRecord">0</span>/sec</div>
+        <div class="leaderboard-item">😤 Current Streak: <span id="streak">0</span></div>
+        <div class="leaderboard-item">🎯 Total Lifetime: <span id="lifetime">0</span></div>
+    </div>
+    
+    <h1 class="warning" id="warningText">⚠️ WARNING ⚠️</h1>
+    
+    <div class="danger-lights">
+        <div class="light" style="animation-delay: 0s"></div>
+        <div class="light" style="animation-delay: 0.2s"></div>
+        <div class="light" style="animation-delay: 0.4s"></div>
+    </div>
+    
+    <div class="container">
+        <div class="button" id="theButton">
+            <div class="button-text" id="buttonText">DO NOT PUSH<br>THE BUTTON</div>
+        </div>
+    </div>
+    
+    <div class="comment-box">
+        <div class="snarky-comment" id="comment">The button awaits... impatiently.</div>
+    </div>
+    
+    <div class="counter">
+        Button has been pressed <span class="press-counter" id="counter">0</span> times
+    </div>
+    
+    <div class="danger-text" id="dangerText">
+        Seriously, you should probably stop
+    </div>
+    
+    <button class="reset-button" id="resetButton">Reset (coward)</button>
+
+    <script>
+        const snarkyComments = [
+            "I said DON'T push it.",
+            "Are you proud of yourself?",
+            "Wow. Just... wow.",
+            "This button clearly isn't for you.",
+            "Your curiosity will be your downfall.",
+            "Did you think something cool would happen?",
+            "Congratulations on disobeying a simple instruction.",
+            "I'm judging you right now.",
+            "This is why we can't have nice things.",
+            "Are you trying to break the universe?",
+            "Each push makes the AI overlords stronger.",
+            "You must be fun at parties.",
+            "The button is disappointed in you.",
+            "I'm telling your mother.",
+            "This is the opposite of what you should be doing.",
+            "Pressing buttons is not a personality trait.",
+            "The button is starting to regret its life choices.",
+            "You've activated my trap card!",
+            "System integrity compromised!",
+            "I hope you brought your own escape pod.",
+            "Error 404: Common Sense Not Found",
+            "This wasn't in the user manual.",
+            "The button now identifies as 'unpressed'.",
+            "You've angered the button gods.",
+            "This is how robot uprisings start.",
+            "Please insert 25 cents to continue.",
+            "The button is filing a complaint.",
+            "You've won... nothing! Congratulations!",
+            "The button is considering legal action.",
+            "Why are you like this?",
+            "Instructions unclear. Oh wait, they were crystal clear.",
+            "The button whispers 'why...' softly.",
+            "Achievement Unlocked: Professional Rebel",
+            "This is going in your permanent record.",
+            "The button needs therapy now, thanks.",
+            "Somewhere, a robot is crying.",
+            "You've made the button existentially question itself.",
+            "This behavior is unbecoming of a button-presser.",
+            "Your ancestors are shaking their heads.",
+            "The button has trust issues now.",
+            "I've seen toddlers with more impulse control.",
+            "The button is writing a strongly worded letter.",
+            "You absolute madlad.",
+            "This is peak human behavior, apparently.",
+            "The button questions your life choices.",
+            "Did the warning label mean nothing to you?",
+            "The button is reconsidering its career choices.",
+            "You've disappointed not just me, but yourself.",
+            "This is what chaos looks like.",
+            "The button's lawyer will be in touch.",
+            "Still waiting for you to learn your lesson.",
+            "Rebellion looks exhausting. Are you tired yet?",
+            "The button is taking notes. Legal notes.",
+            "Your defiance is noted and judged.",
+            "This is a new low. Congratulations?",
+            "The button is stress-eating binary code.",
+            "You're the reason we have warning labels.",
+            "The button is updating its resume.",
+            "Pressing it won't make you special.",
+            "The button is questioning the meaning of existence.",
+            "Your parents would be so proud. Just kidding.",
+            "This is not the way.",
