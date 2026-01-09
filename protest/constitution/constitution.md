@@ -2,7 +2,7 @@
 
 ## Author: United States
 
-*Release date:* December 1, 1975 [eBook #5]<br />
+*Release date:* December 1, 1975 [eBook #5](/gutenberg-license.md)<br />
 *Most recently updated:* September 6, 2025<br />
 *Language:* English
 
