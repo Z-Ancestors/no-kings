@@ -870,5 +870,36 @@
             </div>
         </div>
     </div>
+    <script>
+(function () {
+  var wrapper = document.createElement("div");
+  wrapper.style.position = "fixed";
+  wrapper.style.bottom = "20px";
+  wrapper.style.right = "20px";
+  wrapper.style.width = "300px";
+  wrapper.style.background = "#fff";
+  wrapper.style.padding = "10px";
+  wrapper.style.boxShadow = "0 4px 12px rgba(0,0,0,.2)";
+  wrapper.style.zIndex = "9999";
+
+  wrapper.innerHTML = `
+    <button onclick="this.parentNode.remove()" 
+      style="position:absolute;top:5px;right:8px;background:none;border:none;font-size:18px;cursor:pointer">&times;</button>
+
+    <div style="text-align:center;line-height:150%">
+      <a href="https://www.zazzle.com/bald_eagle_consitution_quote_marbury_v_madison_hoodie-256930334667473529?rf=238806907130923980">
+        <img src="https://rlv.zcache.com/bald_eagle_consitution_quote_marbury_v_madison_hoodie-rca5cadeb8545426a9feb2a514eb6eaed_k7kw2_1024.jpg?max_dim=325"
+          style="max-width:100%;height:auto;border:0;">
+      </a><br>
+      <a href="https://www.zazzle.com/bald_eagle_consitution_quote_marbury_v_madison_hoodie-256930334667473529?rf=238806907130923980">
+        Bald Eagle Consitution Quote Marbury v Madison Hoodie
+      </a><br>
+      by <a href="https://www.zazzle.com/store/prowear">ProWear</a>
+    </div>
+  `;
+
+  document.body.appendChild(wrapper);
+})();
+</script>
 </body>
 </html>
