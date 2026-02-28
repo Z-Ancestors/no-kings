@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>I'm a U.S. Navy Veteran — I Stand with Rep. Jason Crow</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    @keyframes subtle-glow {
+      0%, 100% { box-shadow: 0 0 10px rgba(218, 165, 32, 0.3); }
+      50% { box-shadow: 0 0 20px rgba(218, 165, 32, 0.5); }
+    }
+    
+    @keyframes flag-wave {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      25% { transform: translateY(-2px) rotate(2deg); }
+      75% { transform: translateY(2px) rotate(-2deg); }
+    }
+    
+    body {
+      font-family: 'Georgia', 'Garamond', serif;
+      line-height: 1.8;
+      color: #1a1a2e;
+      background: linear-gradient(180deg, #1a2e1a 0%, #2a3a2a 50%, #1a2e1a 100%);
+      min-height: 100vh;
+      position: relative;
+    }
+    
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: 
+        repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255, 255, 255, 0.03) 2px, rgba(255, 255, 255, 0.03) 4px);
+      pointer-events: none;
+      z-index: 0;
+    }
+    
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .dress-blues-border {
+      border: 3px solid #4a5d23;
+      border-radius: 2px;
+      box-shadow: 
+        0 0 20px rgba(74, 93, 35, 0.4),
+        inset 0 0 30px rgba(0, 0, 0, 0.3);
+      position: relative;
+    }
+    
+    .dress-blues-border::after {
+      content: '';
+      position: absolute;
+      top: -1px;
+      left: -1px;
+      right: -1px;
+      bottom: -1px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      pointer-events: none;
+    }
+    
+    header {
+      text-align: center;
+      padding: 50px 30px;
+      background: 
+        linear-gradient(135deg, rgba(26, 46, 26, 0.98) 0%, rgba(42, 58, 42, 0.98) 100%);
+      color: #ffffff;
+      margin-bottom: 40px;
+      box-shadow: 
+        0 10px 40px rgba(0, 0, 0, 0.6),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      border: 3px solid #4a5d23;
+      border-radius: 2px;
+      position: relative;
+    }
+    
+    header::before {
+      content: '⭐';
+      position: absolute;
+      font-size: 6em;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0.05;
+      color: #4a5d23;
+    }
+    
+    header::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 8px;
+      background: linear-gradient(90deg, 
+        #4a5d23 0%, #4a5d23 33%, 
+        transparent 33%, transparent 66%, 
+        #4a5d23 66%, #4a5d23 100%);
+    }
+    
+    .rank-stripe {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 60px;
+      height: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      opacity: 0.3;
+    }
+    
+    .rank-stripe span {
+      height: 3px;
+      background: #4a5d23;
+      width: 100%;
+    }
+    
+    header h1 {
+      font-size: 2.5em;
+      margin-bottom: 15px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+      color: #ffffff;
+      font-weight: normal;
+      letter-spacing: 1px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    header p {
+      font-size: 1.2em;
+      color: #9db668;
+      font-style: italic;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+      position: relative;
+      z-index: 1;
+    }
+    
+    .flag-accent {
+      display: inline-block;
+      font-size: 1.5em;
+      margin-left: 10px;
+      animation: flag-wave 3s ease-in-out infinite;
+    }
+    
+    .service-seal {
+      text-align: center;
+      margin: 30px 0;
+      font-size: 4em;
+      color: #4a5d23;
+      text-shadow: 0 0 20px rgba(74, 93, 35, 0.5);
+      animation: subtle-glow 3s ease-in-out infinite;
+    }
+    
+    .video-container {
+      text-align: center;
+      margin: 40px 0;
+      background: rgba(26, 46, 26, 0.95);
+      padding: 40px;
+      border-radius: 2px;
+      box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.5),
+        inset 0 0 30px rgba(0, 0, 0, 0.3);
+      border: 3px solid #4a5d23;
+      position: relative;
+    }
+    
+    .video-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: #4a5d23;
+    }
+    
+    .video-container h3 {
+      margin-bottom: 25px;
+      color: #9db668;
+      font-size: 1.6em;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-weight: normal;
+    }
+    
+    section {
+      background: 
+        linear-gradient(135deg, rgba(245, 245, 250, 0.98) 0%, rgba(255, 255, 255, 0.98) 100%);
+      padding: 40px;
+      margin-bottom: 30px;
+      border-radius: 2px;
+      box-shadow: 
+        0 5px 20px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 3px solid #4a5d23;
+      border-left-width: 8px;
+      position: relative;
+    }
+    
+    section:hover {
+      transform: translateY(-3px);
+      box-shadow: 
+        0 8px 25px rgba(0, 0, 0, 0.5),
+        0 0 20px rgba(74, 93, 35, 0.2);
+    }
+    
+    .personal-testimony {
+      background: 
+        linear-gradient(135deg, rgba(15, 28, 46, 0.98) 0%, rgba(26, 35, 50, 0.98) 100%);
+      color: #ffffff;
+      border-color: #c41e3a;
+      border-left-width: 8px;
+      box-shadow: 
+        0 5px 20px rgba(0, 0, 0, 0.6),
+        inset 0 0 30px rgba(196, 30, 58, 0.1);
+    }
+    
+    section h2 {
+      color: #1a2e1a;
+      font-size: 2em;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 2px solid #4a5d23;
+      font-weight: normal;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    
+    .personal-testimony h2 {
+      color: #daa520;
+      border-bottom-color: #c41e3a;
+    }
+    
+    .personal-testimony p {
+      color: #ffffff;
+    }
+    
+    section p {
+      margin-bottom: 15px;
+      font-size: 1.1em;
+      color: #1a1a2e;
+      line-height: 1.9;
+    }
+    
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    
+    ul li {
+      padding: 18px 20px 18px 65px;
+      margin-bottom: 18px;
+      background: rgba(74, 93, 35, 0.05);
+      border-radius: 2px;
+      position: relative;
+      font-size: 1.05em;
+      transition: all 0.3s ease;
+      border-left: 4px solid #4a5d23;
+    }
+    
+    ul li:hover {
+      background: rgba(74, 93, 35, 0.1);
+      border-left-width: 6px;
+      padding-left: 63px;
+    }
+    
+    .bio ul li:before,
+    .values ul li:before {
+      content: "★";
+      position: absolute;
+      left: 25px;
+      color: #4a5d23;
+      font-size: 1.5em;
+    }
+    
+    .endorsement {
+      background: 
+        linear-gradient(135deg, rgba(26, 46, 26, 0.98) 0%, rgba(42, 58, 42, 0.98) 100%);
+      color: #ffffff;
+      text-align: center;
+      padding: 50px 40px;
+      border: 4px solid #4a5d23;
+      box-shadow: 
+        0 10px 40px rgba(0, 0, 0, 0.6),
+        inset 0 0 50px rgba(74, 93, 35, 0.1);
+      position: relative;
+    }
+    
+    .endorsement::before {
+      content: '⭐';
+      position: absolute;
+      font-size: 8em;
+      opacity: 0.05;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #4a5d23;
+    }
+    
+    .endorsement::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 6px;
+      background: linear-gradient(90deg, 
+        #4a5d23 0%, #4a5d23 33%, 
+        #c41e3a 33%, #c41e3a 66%, 
+        #1a2e1a 66%, #1a2e1a 100%);
+    }
+    
+    .endorsement h2 {
+      color: #9db668;
+      border-bottom-color: #c41e3a;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .endorsement p {
+      font-size: 1.2em;
+      line-height: 1.9;
+      color: #ffffff;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .footer {
+      text-align: center;
+      padding: 40px 20px;
+      color: #9db668;
+      font-size: 0.95em;
+      margin-top: 40px;
+      font-style: italic;
+    }
+    
+    .references {
+      background: rgba(26, 46, 26, 0.1);
+      padding: 25px;
+      border-left: 4px solid #4a5d23;
+      font-size: 0.9em;
+      color: #1a1a2e;
+      margin-top: 20px;
+      border-radius: 2px;
+      border: 2px solid #4a5d23;
+    }
+    
+    .references p {
+      margin-bottom: 8px;
+      font-size: 0.9em;
+      color: #1a1a2e;
+    }
+    
+    strong {
+      color: #1a2e1a;
+      font-weight: bold;
+    }
+    
+    .personal-testimony strong,
+    .endorsement strong {
+      color: #9db668;
+    }
+    
+    sup {
+      color: #c41e3a;
+      font-weight: bold;
+    }
+    
+    .motto {
+      text-align: center;
+      color: #9db668;
+      font-style: italic;
+      font-size: 1.1em;
+      margin: 30px 0;
+      letter-spacing: 2px;
+    }
+    
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 1.8em;
+      }
+      
+      section {
+        padding: 30px 25px;
+      }
+      
+      .rank-stripe {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="dress-blues-border">
+      <div class="rank-stripe">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <h1>U.S. Navy Veteran — I Stand with Rep. Jason Crow <span class="flag-accent">🇺🇸</span></h1>
+      <p>This We'll Defend</p>
+    </header>
+
+    <div class="service-seal">⭐</div>
+    <p class="motto">"Rangers Lead The Way"</p>
+
+    <section class="bio dress-blues-border">
+      <h2>Service Record: Rep. Jason Crow</h2>
+      <p><strong>Captain Jason Crow, United States Army (Retired)</strong></p>
+      <p>Distinguished combat service in the world's most elite units:</p>
+      <ul style="list-style: none; padding-left: 0; background: none;">
+        <li>Rank Achieved: <strong>Captain (O-3)</strong> — Commissioned officer, United States Army</li>
+        <li><strong>75th Ranger Regiment</strong> — America's premier light infantry special operations force</li>
+        <li><strong>82nd Airborne Division</strong> — "All American" airborne infantry division</li>
+        <li>Combat Deployments: <strong>Iraq and Afghanistan</strong> — Multiple combat tours</li>
+        <li>Decorations: <strong>Bronze Star Medal</strong> — For meritorious service in a combat zone</li>
+        <li>Served as <strong>Army Ranger and Paratrooper</strong> — Completed some of the military's most demanding training</li>
+      </ul>
+      <p style="margin-top: 25px;">Following his honorable service, Captain Crow continues to serve his country as United States Representative from Colorado's 6th District.<sup>1,2</sup></p>
+    </section>
+
+    <section class="values dress-blues-border">
+      <h2>Why I Support Him</h2>
+      <ul>
+        <li>As a fellow veteran, I recognize the significance of his service in the 75th Rangers and 82nd Airborne — units that represent the highest standards of military excellence.<sup>3</sup></li>
+        <li>He earned the Bronze Star in combat, demonstrating courage and leadership under fire.<sup>4</sup></li>
+        <li>He demonstrates commitment to veterans' issues, bipartisan cooperation, and evidence-based policy.<sup>5</sup></li>
+        <li>He understands the oath we took and continues to defend the Constitution in Congress.<sup>6</sup></li>
+      </ul>
+    </section>
+
+    <section class="personal-testimony dress-blues-border">
+      <h2>A Personal Testament</h2>
+      <p>I understand the true cost of doing what is right, regardless of personal consequence.</p>
+      <p>During my service in the United States Navy, I served as a whistleblower. I reported multiple instances of sexual assault to my chain of command. The response I received was not justice, but retaliation and further assault. This experience taught me that our system, despite its ideals, too often shields perpetrators rather than protecting victims.</p>
+      <p><strong>I know what it means to stand against power.</strong> I recognize authentic courage when I see it. I can distinguish between those who serve with genuine honor and those who abuse their authority.</p>
+      <p>When I witness a decorated officer like Representative Jason Crow — a combat veteran who earned the Bronze Star serving with Rangers and Paratroopers in Iraq and Afghanistan — being attacked by individuals who have never demonstrated comparable honor in service, I recognize it clearly: <strong>These are the tactics of those who fear accountability for their own actions.</strong></p>
+      <p>Those attacking Rep. Crow have never shown a fraction of the courage, sacrifice, or integrity that has defined his entire career. They attack him because his example of true service exposes their own moral bankruptcy.</p>
+    </section>
+
+    <section class="endorsement dress-blues-border">
+      <h2>My Endorsement</h2>
+      <p>I served in the United States Navy. I understand what the words service, duty, and sacrifice truly mean. <strong>I also understand what it costs to stand for what is right.</strong></p>
+      <p><strong>Captain Jason Crow placed his life on the line for this nation.</strong> He served in the 75th Ranger Regiment — an elite special operations unit. He jumped from aircraft with the 82nd Airborne. He deployed multiple times to Iraq and Afghanistan, fighting in combat zones. He earned the Bronze Star for his service under fire.</p>
+      <p><strong>This is the caliber of leader we need.</strong> Someone who has genuinely served with honor in the most demanding units our military offers. Someone who understands real sacrifice. Someone who earned his decorations in combat. Someone who stands for what is right, regardless of difficulty.</p>
+      <p>For these reasons, I proudly stand with Representative Jason Crow — because he is one of us, he has proven his commitment to our nation through combat service in elite units, and he upholds the values we swore to defend.</p>
+      <p><strong>He deserves our support, not attacks from those who have never demonstrated a fraction of his courage or integrity.</strong></p>
+    </section>
+
+    <div class="references dress-blues-border">
+      <p><strong>References:</strong></p>
+      <p>1-6: Personal endorsement based on public record and veteran perspective</p>
+    </div>
+
+    <div class="footer">
+      <p>⭐ © 202 — U.S. Navy Veteran Endorsement ⭐</p>
+      <p>Paid for by individual supporter, not authorized by any candidate or committee</p>
+      <p style="margin-top: 15px;">"Non sibi sed patriae" — Not Self, But Country</p>
+    </div>
+  </div>
+</body>
+</html>
