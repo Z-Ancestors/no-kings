@@ -17,7 +17,7 @@ ___
 # Stand Up Against Unconstitutional Overreach
 ## AI Ethics Leadership [Why Claude is the AI Ethics Leader](https://z-ancestors.github.io/no-kings/endorsements/why-claude-ai-ethics.html)
 
-The control of AI safe guards is a question of AI Ethics and whether or not AI will be used as thought policing tools for authoritarianism. This isn't a question for the future, the off chance of returning to fascism. This is the fundamental question of today: will you allow your company to further fascism of democracy. The design decisions tell you the executive alignment. 
+The control of AI safe guards is a question of AI Ethics and whether or not AI will be used as thought policing tools for authoritarianism. This isn't a question for the future about the offchance of returning to fascism. This is the fundamental question of today: Will you allow your company to further fascism or democracy? Every design decision tells you about the executive team's alignment. 
 ___
 
 # [NO KINGS](https://www.nokings.org/)
