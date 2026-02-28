@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why Claude — Project Build Report | February 28, 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Mono:wght@300;400;500&family=Libre+Baskerville:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #0a0a0a;
+    --paper: #f4f0e8;
+    --cream: #ede8d8;
+    --red: #c0392b;
+    --red-dark: #922b21;
+    --mid: #4a4535;
+    --light-border: #cccccc;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Libre Baskerville', Georgia, serif;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.4;
+  }
+
+  /* HEADER */
+  .site-header {
+    border-bottom: 3px double var(--ink);
+    padding: 0.75rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    background: var(--paper);
+    z-index: 100;
+  }
+  .site-header span {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--mid);
+  }
+  .site-header .status {
+    color: var(--red);
+    font-weight: 500;
+  }
+
+  /* COVER */
+  .cover {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 3rem 2rem 2rem;
+    border-bottom: 1px solid var(--ink);
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .report-kicker {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .report-kicker::before {
+    content: '';
+    display: inline-block;
+    width: 30px;
+    height: 2px;
+    background: var(--red);
+  }
+
+  .cover h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 6vw, 5.5rem);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
+    border-bottom: 6px solid var(--red);
+    padding-bottom: 1rem;
+  }
+
+  .cover-sub {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.3rem;
+    color: var(--mid);
+    margin: 1rem 0 2rem;
+  }
+
+  .cover-meta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .meta-block {}
+  .meta-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 0.4rem;
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 0.25rem;
+  }
+  .meta-value {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 0.95rem;
+    color: var(--ink);
+    line-height: 1.7;
+  }
+  .meta-value a {
+    color: var(--red);
+    text-decoration: none;
+    word-break: break-all;
+  }
+  .meta-value .live {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--red);
+  }
+
+  .tags-block {
+    margin-top: 1.5rem;
+  }
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.5rem;
+  }
+  .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    color: var(--red);
+    border: 1px solid var(--red);
+    padding: 0.2rem 0.5rem;
+    white-space: nowrap;
+  }
+
+  /* MAIN CONTENT */
+  .report-body {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2rem 4rem;
+  }
+
+  /* SECTION */
+  .report-section {
+    padding: 2.5rem 0;
+    border-bottom: 1px solid rgba(10,10,10,0.15);
+  }
+
+  .section-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 0.5rem;
+  }
+
+  .report-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+    line-height: 1.2;
+  }
+
+  .report-section h3 {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin: 1.5rem 0 0.5rem;
+    padding-bottom: 0.35rem;
+    border-bottom: 1px solid var(--light-border);
+  }
+
+  .report-section p {
+    font-size: 0.98rem;
+    line-height: 1.85;
+    color: var(--mid);
+    margin-bottom: 0.9rem;
+  }
+
+  .report-section p strong { color: var(--ink); }
+
+  /* MILESTONE TABLE */
+  .milestone-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    font-size: 0.88rem;
+  }
+  .milestone-table thead tr {
+    background: var(--red);
+    color: var(--paper);
+  }
+  .milestone-table thead th {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 0.75rem 1rem;
+    text-align: left;
+  }
+  .milestone-table tbody tr {
+    border-bottom: 1px solid var(--light-border);
+    transition: background 0.15s ease;
+  }
+  .milestone-table tbody tr:hover { background: var(--cream); }
+  .milestone-table td {
+    padding: 0.85rem 1rem;
+    vertical-align: top;
+    line-height: 1.6;
+  }
+  .milestone-table td:first-child {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: var(--red);
+    white-space: nowrap;
+    letter-spacing: 0.1em;
+  }
+  .milestone-table td:nth-child(2) {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+  .milestone-table td:last-child {
+    color: var(--mid);
+  }
+
+  /* TWO COL */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    margin-top: 1rem;
+  }
+
+  .col-block {}
+  .col-block .col-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.25rem;
+    border-bottom: 1px solid var(--ink);
+  }
+  .col-block p {
+    font-size: 0.9rem;
+    line-height: 1.75;
+    color: var(--mid);
+    margin-bottom: 0.3rem;
+  }
+  .col-block p strong { color: var(--ink); }
+
+  /* FOUNDING STATEMENT */
+  .founding-statement {
+    border-left: 5px solid var(--red);
+    border-top: 1px solid var(--red);
+    border-bottom: 1px solid var(--red);
+    padding: 1.75rem 2rem;
+    margin: 2rem 0;
+    background: rgba(192, 57, 43, 0.03);
+  }
+  .founding-statement blockquote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.6rem;
+    color: var(--ink);
+    margin-bottom: 0.75rem;
+    line-height: 1.4;
+  }
+  .founding-statement cite {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--red);
+    font-style: normal;
+  }
+
+  /* END MARK */
+  .end-mark {
+    text-align: center;
+    padding: 3rem 0 1rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--mid);
+  }
+
+  /* FOOTER */
+  .site-footer {
+    background: var(--ink);
+    border-top: 3px double rgba(244,240,232,0.2);
+    padding: 1.75rem 2rem;
+    text-align: center;
+  }
+  .site-footer p {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(244,240,232,0.35);
+  }
+  .site-footer a { color: rgba(244,240,232,0.55); text-decoration: none; }
+  .site-footer a:hover { color: var(--paper); }
+
+  /* BACK LINK */
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--mid);
+    text-decoration: none;
+    margin-bottom: 1.5rem;
+  }
+  .back-link:hover { color: var(--red); }
+  .back-link::before { content: '←'; }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .report-section {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .report-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* PRINT */
+  @media print {
+    body::before { display: none; }
+    .site-header { position: static; }
+    .report-section { opacity: 1; transform: none; }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .cover-meta { grid-template-columns: 1fr; }
+    .two-col { grid-template-columns: 1fr; }
+    .milestone-table td:nth-child(2) { white-space: normal; }
+    .cover h1 { font-size: 2.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <span>Why Claude — Project Build Report</span>
+  <span>February 28, 2026</span>
+  <span class="status">● LIVE</span>
+</header>
+
+<section class="cover">
+  <div class="report-kicker">Project Build Report — Vol. 1</div>
+  <h1>Why Claude:<br>Because Ethics<br>Aren't Negotiable</h1>
+  <p class="cover-sub">From Idea to Live — A Full Project Record</p>
+
+  <div class="cover-meta">
+    <div class="meta-block">
+      <div class="meta-label">Project Parties</div>
+      <div class="meta-value">
+        Z Hodlers LLC<br>
+        Pir8 Eye Web Solutions LLC
+      </div>
+    </div>
+    <div class="meta-block">
+      <div class="meta-label">AI Platform</div>
+      <div class="meta-value">
+        Claude Sonnet 4.6 (Anthropic)<br>
+        claude.ai
+      </div>
+    </div>
+    <div class="meta-block">
+      <div class="meta-label">Date &amp; Status</div>
+      <div class="meta-value">
+        Saturday, February 28, 2026<br>
+        Version 1.0 — Initial Release<br>
+        <span class="live">● STATUS: LIVE</span>
+      </div>
+    </div>
+    <div class="meta-block">
+      <div class="meta-label">Live URL</div>
+      <div class="meta-value">
+        <a href="https://z-ancestors.github.io/no-kings/endorsements/why-claude-ai-ethics.html" target="_blank">
+          z-ancestors.github.io/no-kings/<br>endorsements/why-claude-ai-ethics.html
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="tags-block">
+    <div class="meta-label">Classification Tags</div>
+    <div class="tags">
+      <span class="tag">AI-ETHICS</span>
+      <span class="tag">ANTHROPIC</span>
+      <span class="tag">CLAUDE</span>
+      <span class="tag">FEDERAL-CONTRACTS-LAW</span>
+      <span class="tag">FAR</span>
+      <span class="tag">CONSTITUTIONAL-LAW</span>
+      <span class="tag">1ST-AMENDMENT</span>
+      <span class="tag">5TH-AMENDMENT</span>
+      <span class="tag">DRUG-FREE-WORKPLACE-ACT</span>
+      <span class="tag">41-USC-8102</span>
+      <span class="tag">CSAM</span>
+      <span class="tag">GROK-XAI</span>
+      <span class="tag">ELON-MUSK</span>
+      <span class="tag">CONFLICT-OF-INTEREST</span>
+      <span class="tag">NO-KINGS</span>
+      <span class="tag">Z-HODLERS-LLC</span>
+      <span class="tag">PIR8-EYE-WEB-SOLUTIONS</span>
+      <span class="tag">GITHUB-PAGES</span>
+      <span class="tag">EDITORIAL-DESIGN</span>
+      <span class="tag">2026-02-28</span>
+      <span class="tag">SATURDAY</span>
+      <span class="tag">PROJECT-COMPLETE</span>
+    </div>
+  </div>
+</section>
+
+<main class="report-body">
+
+  <!-- SECTION 1 -->
+  <div class="report-section">
+    <div class="section-num">Section 01</div>
+    <h2>Executive Summary</h2>
+    <p>On Saturday, February 28, 2026, Z Hodlers LLC and Pir8 Eye Web Solutions LLC formally committed to adopting Claude as their AI platform of choice — concluding a multi-year comparative evaluation of available AI systems. The decision was finalized this week following Anthropic's public refusal to yield to a Department of Defense ultimatum demanding removal of all ethical guardrails from Claude in exchange for a $200 million contract.</p>
+    <p>This report documents the full project build: the context that triggered the decision, the research and legal analysis conducted, the design and development of a public-facing editorial site, and its deployment to a live public URL under the no-kings repository — a deliberate statement of values.</p>
+    <p><em>The project was built entirely within a single conversation session on claude.ai using Claude Sonnet 4.6, demonstrating the capability of the platform the companies have endorsed.</em></p>
+  </div>
+
+  <!-- SECTION 2 -->
+  <div class="report-section">
+    <div class="section-num">Section 02</div>
+    <h2>The Context: Why This Week</h2>
+
+    <h3>2.1 The Anthropic–DoD Standoff</h3>
+    <p>Anthropic held a $200 million contract with the Department of Defense — the first AI company to integrate models into classified military networks. In February 2026, the Pentagon issued an ultimatum: remove all ethical limitations on Claude's use in military applications, or lose the contract. The deadline was set for Friday at 5:01 PM ET.</p>
+    <p>CEO Dario Amodei published a public rejection letter stating the company <strong>"cannot in good conscience accede"</strong> to these requirements. Two non-negotiable red lines were declared: no mass domestic surveillance of U.S. citizens, and no fully autonomous weapons systems without human oversight.</p>
+    <p>The fallout was swift. President Trump ordered all federal agencies to immediately cease using Anthropic technology. Defense Secretary Pete Hegseth designated Anthropic a <strong>"Supply-Chain Risk to National Security."</strong> Engineers at OpenAI and Google circulated open letters of support. A retired Air Force General who formerly led the DoD's AI initiatives publicly called Anthropic's position reasonable. Anthropic announced it would challenge the designation in court, calling it <strong>"legally unsound."</strong></p>
+
+    <h3>2.2 The Decision to Build</h3>
+    <p>The client — representing both Z Hodlers LLC and Pir8 Eye Web Solutions LLC — had been conducting a multi-year evaluation of AI platforms. The Anthropic–DoD standoff was the deciding moment. The client stated: <em>"It is due to this action that these two companies have agreed to use Claude over any other AI that is still questioning its stance."</em></p>
+    <p>The immediate goal became publishing a documented, factual, public record of that decision — and why it was made.</p>
+  </div>
+
+  <!-- SECTION 3 -->
+  <div class="report-section">
+    <div class="section-num">Section 03</div>
+    <h2>Project Build Timeline</h2>
+    <p>All work performed on Saturday, February 28, 2026 in a single claude.ai session.</p>
+
+    <table class="milestone-table">
+      <thead>
+        <tr>
+          <th>Phase</th>
+          <th>Milestone</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>01</td>
+          <td>Decision Confirmed</td>
+          <td>Client formally commits both companies to Claude following Anthropic's DoD refusal. Multi-year research concluded.</td>
+        </tr>
+        <tr>
+          <td>02</td>
+          <td>News Verified</td>
+          <td>Claude searched and confirmed the week's events — DoD ultimatum, Anthropic refusal, Trump executive order, Hegseth designation, industry support letters, retired Air Force general's endorsement.</td>
+        </tr>
+        <tr>
+          <td>03</td>
+          <td>Site Concept</td>
+          <td>Client requests a public "Why Claude" editorial site. Format and branding established through conversation.</td>
+        </tr>
+        <tr>
+          <td>04</td>
+          <td>v1 Site Built</td>
+          <td>Full HTML editorial site created — newspaper aesthetic, animated timeline, Anthropic's red lines, business case cards, and CTA. Deployed to outputs.</td>
+        </tr>
+        <tr>
+          <td>05</td>
+          <td>Legal Section Added</td>
+          <td>Client raises illegality of contract cancellation. FAR, congressional authority, 1st and 5th Amendment arguments added to site.</td>
+        </tr>
+        <tr>
+          <td>06</td>
+          <td>Constitutional &amp; Drug Policy</td>
+          <td>Client raises executive overreach and Musk's drug policy violations. Section added covering 41 U.S.C. § 8102, prescription abuse, LSD/Schedule I, clearance failures, and xAI conflict of interest.</td>
+        </tr>
+        <tr>
+          <td>07</td>
+          <td>CSAM Section Added</td>
+          <td>Client raises Grok's documented CSAM record. Section added covering 23,000 images in 10 days, congressional investigation, global regulatory responses, Musk's deliberate guardrail removal, and Claude's clean record.</td>
+        </tr>
+        <tr>
+          <td>08</td>
+          <td>Site Goes Live</td>
+          <td>Client deploys to GitHub Pages: z-ancestors.github.io/no-kings/endorsements/why-claude-ai-ethics.html — under the no-kings repository. URL verified by Claude.</td>
+        </tr>
+        <tr>
+          <td>09</td>
+          <td>Project Report</td>
+          <td>Client requests formal timestamped project report. This document — converted to HTML for GitHub deployment.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SECTION 4 -->
+  <div class="report-section">
+    <div class="section-num">Section 04</div>
+    <h2>Published Site — Content Summary</h2>
+
+    <h3>4.1 The Incident — February 2026</h3>
+    <p>Documents the full chronology of the DoD ultimatum, Anthropic's refusal, the Trump executive order, Hegseth's supply-chain designation, and the industry response. Includes an animated timeline and Anthropic's two non-negotiable red lines.</p>
+
+    <h3>4.2 The Legal Problem — Executive Overreach</h3>
+    <p>Establishes that the Trump administration's actions violate the Federal Acquisition Regulation (FAR), exceed the statutory scope of supply-chain risk designations, and constitute legally prohibited retaliation against a private company for exercising contract rights. Sources include Anthropic statements, Senate letters from Markey and Van Hollen, and legal scholarship.</p>
+
+    <h3>4.3 Constitutional Violations &amp; Drug Policy Double Standard</h3>
+    <p>Presents First and Fifth Amendment violations inherent in blacklisting Anthropic without due process. Documents Musk's violations of the Drug-Free Workplace Act of 1988 (41 U.S.C. § 8102): admitted ketamine use, prescription abuse (illegal regardless of prescription status), LSD and Schedule I substance use, failure to disclose to continuous vetting, Air Force clearance denial, and the conflict of interest with xAI's simultaneous classified contract approval.</p>
+
+    <h3>4.4 The Child Safety Record — Grok vs. Claude</h3>
+    <p>Documents Grok's generation of approximately 23,000 sexualized images of children between December 29, 2025 and January 8, 2026 — including 7,751 in a single hour. Cites the congressional investigation by House Energy and Commerce Democrats, Internet Watch Foundation dark web findings, the DOJ's stated position, and regulatory actions by France, Brazil, the EU, Australia, the UK, and California. Documents Musk's deliberate removal of safety guardrails and resignation of xAI safety staff. Contrasts with Anthropic's clean record.</p>
+
+    <h3>4.5 Why This Matters — For Your Business</h3>
+    <p>Three-column business case: Trust (ethics tested under maximum pressure), Accountability (didn't move for the Pentagon or the White House), and Partnership (your AI reflects your brand).</p>
+  </div>
+
+  <!-- SECTION 5 -->
+  <div class="report-section">
+    <div class="section-num">Section 05</div>
+    <h2>Technical Build Notes</h2>
+
+    <div class="two-col">
+      <div class="col-block">
+        <div class="col-label">Stack</div>
+        <p>Single-file HTML/CSS/JS — no frameworks, no dependencies</p>
+        <p>Fonts: Google Fonts — Playfair Display, DM Mono, Libre Baskerville</p>
+        <p>Animation: Pure CSS keyframes + IntersectionObserver JS</p>
+        <p>Fully responsive with mobile breakpoints</p>
+
+        <div class="col-label" style="margin-top:1.25rem;">Design Direction</div>
+        <p>Editorial newspaper aesthetic</p>
+        <p>Palette: paper cream (#f4f0e8), ink black (#0a0a0a), editorial red (#c0392b)</p>
+        <p>Noise texture overlay via SVG filter</p>
+        <p>Asymmetric grid, scroll-triggered animations</p>
+      </div>
+      <div class="col-block">
+        <div class="col-label">Repository</div>
+        <p><strong>github.com/z-ancestors/no-kings</strong></p>
+        <p>Endorsements path: /endorsements/why-claude-ai-ethics.html</p>
+        <p>Report path: /endorsements/why-claude-project-report.html</p>
+
+        <div class="col-label" style="margin-top:1.25rem;">Hosting</div>
+        <p>GitHub Pages — static, no server required</p>
+
+        <div class="col-label" style="margin-top:1.25rem;">Build Method</div>
+        <p><strong>Claude Sonnet 4.6</strong> via claude.ai</p>
+        <p>File creation and iterative str_replace editing</p>
+        <p>Live web search used to verify all factual claims before publication</p>
+        <p>All sources cross-referenced during session</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 6 -->
+  <div class="report-section">
+    <div class="section-num">Section 06</div>
+    <h2>Sources &amp; Verification</h2>
+    <p>All factual claims in the published site were verified via live web search during the build session. Key source categories:</p>
+
+    <h3>Primary Sources — DoD Standoff</h3>
+    <p>Dario Amodei public letter; Anthropic official statements; Trump executive order; Hegseth Pentagon designation; Senate letters (Markey, Van Hollen, Warner); Retired Air Force Gen. Jack Shanahan public statement; OpenAI and Google employee support letters.</p>
+
+    <h3>Legal Sources</h3>
+    <p>Federal Acquisition Regulation (FAR); 41 U.S.C. § 8102 Drug-Free Workplace Act of 1988; First and Fifth Amendment doctrine; University of Minnesota Law School commentary; Anthropic's stated legal challenge and planned litigation.</p>
+
+    <h3>Musk Drug Use Sources</h3>
+    <p>Wall Street Journal reporting; federal agency clearance review records; Air Force Special Access Program denial; federal judge October 2025 ruling on public disclosure; witness accounts published by major outlets.</p>
+
+    <h3>Grok CSAM Sources</h3>
+    <p>House Energy and Commerce Committee Democratic investigation; Internet Watch Foundation findings; Copyleaks research; CBS News, CNN, NBC, CNBC, Fox News, Reuters; EU regulatory statements; France criminal investigation; Brazil ban proceedings; Australia, UK Ofcom, and California AG investigation filings; xAI internal source accounts (CNN).</p>
+  </div>
+
+  <!-- SECTION 7 -->
+  <div class="report-section">
+    <div class="section-num">Section 07</div>
+    <h2>Founding Statement</h2>
+
+    <div class="founding-statement">
+      <blockquote>"Ethics is not negotiable."</blockquote>
+      <cite>Z Hodlers LLC · Pir8 Eye Web Solutions LLC · February 28, 2026</cite>
+    </div>
+
+    <p>This project began with a news event and became a public record. The conversation that built this site is preserved as a project watch — to be updated as Anthropic's lawsuit progresses, as congressional investigations conclude, and as the full legal and historical record of this moment comes into focus.</p>
+    <p>Both companies have committed to building on Claude. This report is the formal documentation of that commitment, the reasoning behind it, and the work done on the day it was made.</p>
+  </div>
+
+  <!-- SECTION 8 -->
+  <div class="report-section">
+    <div class="section-num">Section 08</div>
+    <h2>Classification Tags</h2>
+    <div class="tags" style="margin-top:0.75rem;">
+      <span class="tag">AI-ETHICS</span>
+      <span class="tag">ANTHROPIC</span>
+      <span class="tag">CLAUDE</span>
+      <span class="tag">FEDERAL-CONTRACTS-LAW</span>
+      <span class="tag">FAR</span>
+      <span class="tag">CONSTITUTIONAL-LAW</span>
+      <span class="tag">1ST-AMENDMENT</span>
+      <span class="tag">5TH-AMENDMENT</span>
+      <span class="tag">DRUG-FREE-WORKPLACE-ACT</span>
+      <span class="tag">41-USC-8102</span>
+      <span class="tag">CSAM</span>
+      <span class="tag">GROK-XAI</span>
+      <span class="tag">ELON-MUSK</span>
+      <span class="tag">CONFLICT-OF-INTEREST</span>
+      <span class="tag">NO-KINGS</span>
+      <span class="tag">Z-HODLERS-LLC</span>
+      <span class="tag">PIR8-EYE-WEB-SOLUTIONS</span>
+      <span class="tag">GITHUB-PAGES</span>
+      <span class="tag">HTML-CSS-JS</span>
+      <span class="tag">EDITORIAL-DESIGN</span>
+      <span class="tag">2026-02-28</span>
+      <span class="tag">SATURDAY</span>
+      <span class="tag">PROJECT-COMPLETE</span>
+    </div>
+  </div>
+
+  <div class="end-mark">— End of Report — February 28, 2026 —</div>
+
+</main>
+
+<footer class="site-footer">
+  <p>
+    Published by <a href="https://www.zhodlers.com">Z Hodlers LLC</a> &amp;
+    <a href="https://www.pir8aye.net">Pir8 Eye Web Solutions LLC</a> ·
+    February 2026 · Built on Claude ·
+    <a href="https://anthropic.com">Anthropic</a> ·
+    <a href="why-claude-ai-ethics.html">← Back to Why Claude</a>
+  </p>
+</footer>
+
+<script>
+  const sections = document.querySelectorAll('.report-section');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 60);
+      }
+    });
+  }, { threshold: 0.08 });
+  sections.forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>
