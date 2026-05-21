@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Louisiana's Election Signal — A Podcast Series on Voter Suppression & Democratic Integrity</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: #0d0d0d;
+            color: #e8e8e8;
+            line-height: 1.6;
+            background-image: 
+                repeating-linear-gradient(
+                    0deg,
+                    rgba(255, 255, 255, 0.02) 0px,
+                    rgba(255, 255, 255, 0.02) 1px,
+                    transparent 1px,
+                    transparent 2px
+                );
+        }
+
+        header {
+            padding: 60px 40px;
+            border-bottom: 2px solid #d32f2f;
+            background: linear-gradient(135deg, rgba(211, 47, 47, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
+            margin-bottom: 60px;
+        }
+
+        .header-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+            line-height: 1.1;
+            color: #ffffff;
+        }
+
+        .tagline {
+            font-size: 1.3rem;
+            color: #d32f2f;
+            font-weight: normal;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .intro-text {
+            font-size: 1.1rem;
+            color: #b0b0b0;
+            max-width: 700px;
+            line-height: 1.8;
+        }
+
+        .data-banner {
+            max-width: 900px;
+            margin: 0 auto 60px;
+            padding: 30px;
+            background: rgba(211, 47, 47, 0.15);
+            border-left: 4px solid #d32f2f;
+            border-radius: 2px;
+        }
+
+        .data-banner h3 {
+            color: #ffffff;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .data-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .data-item {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 15px;
+            border-radius: 2px;
+        }
+
+        .data-label {
+            font-size: 0.9rem;
+            color: #d32f2f;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .data-value {
+            font-size: 1.8rem;
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 40px 60px;
+        }
+
+        .episodes-container {
+            display: grid;
+            gap: 40px;
+        }
+
+        .episode {
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(211, 47, 47, 0.3);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+            animation: fadeIn 0.8s ease-out forwards;
+            animation-fill-mode: both;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .episode:nth-child(1) { animation-delay: 0s; }
+        .episode:nth-child(2) { animation-delay: 0.1s; }
+        .episode:nth-child(3) { animation-delay: 0.2s; }
+        .episode:nth-child(4) { animation-delay: 0.3s; }
+        .episode:nth-child(5) { animation-delay: 0.4s; }
+        .episode:nth-child(6) { animation-delay: 0.5s; }
+        .episode:nth-child(7) { animation-delay: 0.6s; }
+        .episode:nth-child(8) { animation-delay: 0.7s; }
+        .episode:nth-child(9) { animation-delay: 0.8s; }
+
+        .episode:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: #d32f2f;
+            transform: translateX(10px);
+        }
+
+        .episode-number {
+            color: #d32f2f;
+            font-size: 0.9rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .episode-title {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #ffffff;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .episode-duration {
+            color: #808080;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .episode-description {
+            color: #c8c8c8;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .episode-focus {
+            background: rgba(211, 47, 47, 0.1);
+            padding: 15px;
+            border-left: 3px solid #d32f2f;
+            margin-top: 20px;
+            font-size: 0.95rem;
+            color: #d8d8d8;
+        }
+
+        .episode-focus strong {
+            color: #d32f2f;
+        }
+
+        .bonus-badge {
+            display: inline-block;
+            background: #d32f2f;
+            color: #0d0d0d;
+            padding: 6px 12px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            border-radius: 2px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        footer {
+            border-top: 2px solid #d32f2f;
+            padding: 40px;
+            margin-top: 80px;
+            background: rgba(211, 47, 47, 0.1);
+            text-align: center;
+            color: #808080;
+        }
+
+        .footer-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .footer-content p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        .footer-content strong {
+            color: #d32f2f;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            header {
+                padding: 40px 20px;
+            }
+
+            main {
+                padding: 0 20px 40px;
+            }
+
+            .episode {
+                padding: 25px;
+            }
+
+            .episode-title {
+                font-size: 1.5rem;
+            }
+
+            .data-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-content">
+        <h1>Louisiana's Election Signal</h1>
+        <p class="tagline">A Podcast Series on Voter Suppression, Electoral Integrity & Democratic Legitimacy</p>
+        <p class="intro-text">When 84% of people don't consent—by choice or force—what does that mean for a government claiming legitimacy? This series documents Louisiana's 16% primary turnout, identifies the barriers that suppress votes, and asks the questions that demand answers.</p>
+    </div>
+</header>
+
+<main>
+    <div class="data-banner">
+        <h3>2026 Louisiana Primary Results (99% Reporting)</h3>
+        <div class="data-grid">
+            <div class="data-item">
+                <div class="data-label">Population Turnout</div>
+                <div class="data-value">16.13%</div>
+            </div>
+            <div class="data-item">
+                <div class="data-label">Registered Voter Turnout</div>
+                <div class="data-value">25.14%</div>
+            </div>
+            <div class="data-item">
+                <div class="data-label">Republican Votes Cast</div>
+                <div class="data-value">392,783</div>
+            </div>
+            <div class="data-item">
+                <div class="data-label">Democratic Votes Cast</div>
+                <div class="data-value">344,751</div>
+            </div>
+            <div class="data-item">
+                <div class="data-label">Anti-Trump Republican Vote</div>
+                <div class="data-value">54.2%</div>
+            </div>
+            <div class="data-item">
+                <div class="data-label">Anti-Davis Democratic Vote</div>
+                <div class="data-value">52.5%</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="episodes-container">
+
+        <!-- Episode 1 -->
+        <div class="episode">
+            <div class="episode-number">Episode 1</div>
+            <h2 class="episode-title">16% Is Not a Democracy</h2>
+            <p class="episode-duration">Under 5 minutes</p>
+            <p class="episode-description">When 84% of people don't consent—by choice or force—what does that mean for a government claiming legitimacy? This opening episode establishes the signal: Louisiana's 16.13% population turnout and 25.14% registered voter turnout represent a system in crisis.</p>
+            <div class="episode-focus">
+                <strong>Focus:</strong> Defining what low turnout reveals about electoral health, and asking the crucial question: Is this apathy or suppression?
+            </div>
+        </div>
+
+        <!-- Episode 2 -->
+        <div class="episode">
+            <div class="episode-number">Episode 2</div>
+            <h2 class="episode-title">The Architecture of Suppression</h2>
+            <p class="episode-duration">Under 5 minutes</p>
+            <p class="episode-description">It's not an accident. Five deliberate barriers lock voters out: the 500,000-signature recall requirement (impossible), in-person-only petition collection (archaic), name-matching rules (targets women), redistricting in majority-Black districts (voter dilution), and no-solicitation laws (blocks organizing).</p>
+            <div class="episode-focus">
+                <strong>Focus:</strong> Real barriers, documented examples, and the pattern that emerges: systemic suppression targeting specific groups.
+            </div>
+        </div>
+
+        <!-- Episode 3 -->
+        <div class="episode">
+            <div class="episode-number">Episode 3</div>
+            <h2 class="episode-title">What the Numbers Actually Show</h2>
+            <p class="episode-duration">Under 5 minutes</p>
+            <p class="episode-description">The media said "Trump won in a blowout." The numbers say something else. Julia Letlow got 44.8% of Republican votes. Combined, Fleming and Cassidy got 54.2%—53% of Republicans voted against Trump's candidate. On the Democratic side, 52.5% voted against the frontrunner.</p>
+            <div class="episode-focus">
+                <strong>Focus:</strong> Definitive primary data showing the actual voter will—not the narrative.
+            </div>
+        </div>
+
+        <!-- Episode 4 -->
+        <div class="episode">
+            <div class="episode-number">Episode 4</div>
+            <h2 class="episode-title">The Runoff Test</h2>
+            <p class="episode-duration">Under 5 minutes</p>
+            <p class="episode-description">Now we find out if voters meant what they said. The runoffs will show: Republican (Letlow vs Fleming) and Democratic (Davis vs Crockett). Will the ~105,000 no-partiers who strategically voted Republican flip to the Democrat in the general? Will principled voters hold their ground?</p>
+            <div class="episode-focus">
+                <strong>Focus:</strong> Four possible runoff scenarios and what each reveals about voter behavior under suppression.
+            </div>
+        </div>
+
+        <!-- Episode 5 -->
+        <div class="episode">
+            <div class="episode-number">Episode 5</div>
+            <h2 class="episode-title">The Alternative</h2>
+            <p class="episode-duration">Under 5 minutes</p>
+            <p class="episode-description">When an unstoppable force meets an immovable object, something has to give. Louisiana's history: blue state → swing → red state. Current reality: 84% non-participation means no legitimacy. But the alternative exists: grassroots organizing, narrative correction, and people using their platform to fight misinformation with data.</p>
+            <div class="episode-focus">
+                <strong>Focus:</strong> What's actually possible when every legal pathway to change is blocked.
+            </div>
+        </div>
+
+        <!-- Episode 6 -->
+        <div class="episode">
+            <div class="episode-number">Episode 6</div>
+            <h2 class="episode-title">By International Standards, We're Failing</h2>
+            <p class="episode-duration">Under 5 minutes</p>
+            <p class="episode-description">The Organization for Security and Cooperation in Europe sends election observers to other countries. By their standards—universal suffrage, free campaign access, transparent counting, barrier-free registration—Louisiana fails. We don't meet international standards for free and fair elections.</p>
+            <div class="episode-focus">
+                <strong>Focus:</strong> What observers measure, how Louisiana ranks, and what "we know it" means.
+            </div>
+        </div>
+
+        <!-- Episode 7 -->
+        <div class="episode">
+            <div class="episode-number">Episode 7</div>
+            <h2 class="episode-title">Truth-Telling Is a Civic Duty</h2>
+            <p class="episode-duration">Under 5 minutes</p>
+            <p class="episode-description">Correcting election lies isn't partisan—it's patriotic. Legitimate criticism (these barriers suppress votes) is not denialism (elections are fake). Democracy requires informed consent. Lies break that consent. You have a duty to correct lies you can prove with data.</p>
+            <div class="episode-focus">
+                <strong>Focus:</strong> The difference between debunking misinformation and being called a denier, and why your voice matters.
+            </div>
+        </div>
+
+        <!-- Episode 8 -->
+        <div class="episode">
+            <div class="episode-number">Episode 8</div>
+            <h2 class="episode-title">How to Read the Signals</h2>
+            <p class="episode-duration">Under 5 minutes</p>
+            <p class="episode-description">Turnout numbers aren't just statistics—they're a language. Learn to read it: overall turnout (crisis signal), party-to-party comparison (which group mobilized?), vote distribution (consensus or chaos?), anti-frontrunner voting (intentional rejection), demographic patterns (targeted suppression), and non-participation (consent withdrawn).</p>
+            <div class="episode-focus">
+                <strong>Focus:</strong> A framework for understanding what election data actually means, and how to use it.
+            </div>
+        </div>
+
+        <!-- Episode 9 -->
+        <div class="episode">
+            <span class="bonus-badge">Bonus Episode</span>
+            <div class="episode-number">Episode 9</div>
+            <h2 class="episode-title">The Questions Remain</h2>
+            <p class="episode-duration">Under 5 minutes — Call to Action</p>
+            <p class="episode-description">We have answers to some questions. But the ones we can't answer are the ones that matter most. This episode identifies what research is still needed, which questions arose out of scope, and how you can help find the answers. Because the work isn't finished—it's just beginning.</p>
+            <div class="episode-focus">
+                <strong>Focus:</strong> Louisiana's 25-year turnout decline, the no-partier mystery, disenfranchised groups, international comparisons, and what actually happens in the runoffs.
+            </div>
+        </div>
+
+    </div>
+
+    <div style="margin-top: 100px; padding-top: 60px; border-top: 2px solid #d32f2f;">
+        <h2 style="font-size: 2.5rem; color: #ffffff; margin-bottom: 15px; letter-spacing: -1px;">Keep It Simple Stupid</h2>
+        <p style="font-size: 1.3rem; color: #d32f2f; font-style: italic; margin-bottom: 30px;">The KISS Method of Calling BS</p>
+        
+        <p style="font-size: 1.1rem; color: #c8c8c8; margin-bottom: 40px; line-height: 1.8;">When you're drowning in narratives, frames, and competing claims, use this framework to cut through the noise. It's simple. It's powerful. It works because it always follows the money and the power.</p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-bottom: 50px;">
+            
+            <!-- Step 1 -->
+            <div style="padding: 30px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(211, 47, 47, 0.3); border-radius: 2px;">
+                <div style="color: #d32f2f; font-size: 3rem; font-weight: bold; margin-bottom: 15px;">①</div>
+                <h3 style="color: #ffffff; font-size: 1.3rem; margin-bottom: 10px; font-weight: bold;">Identify Narrative, Frame & Events</h3>
+                <p style="color: #b8b8b8; line-height: 1.7;">What is the story being told? What's the official frame? What events are being highlighted or hidden?</p>
+                <p style="color: #808080; font-size: 0.9rem; font-style: italic; margin-top: 15px;">Example: "Trump's candidate won in a blowout"</p>
+            </div>
+
+            <!-- Step 2 -->
+            <div style="padding: 30px; background: rgba(211, 47, 47, 0.15); border: 2px solid #d32f2f; border-radius: 2px;">
+                <div style="color: #d32f2f; font-size: 3rem; font-weight: bold; margin-bottom: 15px;">②</div>
+                <h3 style="color: #ffffff; font-size: 1.3rem; margin-bottom: 10px; font-weight: bold;">Cui Bono et Cui Pecunia?</h3>
+                <p style="color: #b8b8b8; line-height: 1.7;"><strong>Who benefits?</strong> Who gets power, attention, votes? <strong>Who gets money?</strong> Who profits from this narrative being believed?</p>
+                <p style="color: #808080; font-size: 0.9rem; font-style: italic; margin-top: 15px;">Example: Trump's candidate benefits from perception of inevitability</p>
+            </div>
+
+            <!-- Step 3 -->
+            <div style="padding: 30px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(211, 47, 47, 0.3); border-radius: 2px;">
+                <div style="color: #d32f2f; font-size: 3rem; font-weight: bold; margin-bottom: 15px;">③</div>
+                <h3 style="color: #ffffff; font-size: 1.3rem; margin-bottom: 10px; font-weight: bold;">Invert Narrative, Reframe & Events</h3>
+                <p style="color: #b8b8b8; line-height: 1.7;">Now flip it. What if the opposite narrative were true? What events would matter then? What frame would make sense?</p>
+                <p style="color: #808080; font-size: 0.9rem; font-style: italic; margin-top: 15px;">Inverted: "54% of Republicans explicitly rejected Trump's candidate"</p>
+            </div>
+
+            <!-- Step 4 -->
+            <div style="padding: 30px; background: rgba(211, 47, 47, 0.15); border: 2px solid #d32f2f; border-radius: 2px;">
+                <div style="color: #d32f2f; font-size: 3rem; font-weight: bold; margin-bottom: 15px;">④</div>
+                <h3 style="color: #ffffff; font-size: 1.3rem; margin-bottom: 10px; font-weight: bold;">Cui Bono et Cui Pecunia? (Inverted)</h3>
+                <p style="color: #b8b8b8; line-height: 1.7;">Under the inverted narrative, who benefits? Who gets power, attention, votes? Who profits from this truth being known?</p>
+                <p style="color: #808080; font-size: 0.9rem; font-style: italic; margin-top: 15px;">Inverted: Anti-Trump Republicans benefit from showing their real strength</p>
+            </div>
+
+            <!-- Step 5 -->
+            <div style="padding: 30px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(211, 47, 47, 0.3); border-radius: 2px;">
+                <div style="color: #d32f2f; font-size: 3rem; font-weight: bold; margin-bottom: 15px;">⑤</div>
+                <h3 style="color: #ffffff; font-size: 1.3rem; margin-bottom: 10px; font-weight: bold;">Compare the Gap: Donde Est Differencia?</h3>
+                <p style="color: #b8b8b8; line-height: 1.7;">Where is the difference? What gap exists between these two versions? <strong>That gap is where the BS lives.</strong></p>
+                <p style="color: #808080; font-size: 0.9rem; font-style: italic; margin-top: 15px;">Gap: Why hide 54% voting against if candidate is inevitable?</p>
+            </div>
+
+        </div>
+
+        <div style="padding: 40px; background: rgba(211, 47, 47, 0.1); border-left: 4px solid #d32f2f; border-radius: 2px; margin-bottom: 50px;">
+            <h3 style="color: #ffffff; font-size: 1.3rem; margin-bottom: 20px; font-weight: bold;">Why This Works</h3>
+            <p style="color: #c8c8c8; line-height: 1.8; margin-bottom: 15px;">The KISS Method works because <strong>power always follows money and benefit.</strong> When you identify the gap between the official narrative and the inverted narrative, you've found where someone is lying—or where truth is being hidden.</p>
+            <p style="color: #c8c8c8; line-height: 1.8;">It doesn't require fancy analysis. It requires: curiosity about motive, willingness to flip the frame, and the discipline to follow the money. Anyone can do this. Everyone should.</p>
+        </div>
+
+        <div style="padding: 30px; background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(211, 47, 47, 0.3); border-radius: 2px;">
+            <h3 style="color: #ffffff; font-size: 1.2rem; margin-bottom: 15px; font-weight: bold;">Quick Cheat Sheet</h3>
+            <ul style="list-style: none; color: #b8b8b8; line-height: 2;">
+                <li>🔍 <strong>Step 1:</strong> What's the story?</li>
+                <li>💰 <strong>Step 2:</strong> Who benefits? Who gets paid?</li>
+                <li>🔄 <strong>Step 3:</strong> Flip it. What's the opposite story?</li>
+                <li>💰 <strong>Step 4:</strong> Who benefits from the flipped version? Who gets paid?</li>
+                <li>⚡ <strong>Step 5:</strong> Where's the gap? That's where the BS is hiding.</li>
+            </ul>
+        </div>
+    </div>
+
+</main>
+
+<footer>
+    <div class="footer-content">
+        <p><strong>Louisiana's Election Signal</strong> is a grassroots podcast series documenting voter suppression, electoral barriers, and the questions that demand answers.</p>
+        <p>All data sourced from Louisiana Secretary of State, 2026 primary results at 99% reporting. Analysis available for verification.</p>
+        <p>If you have data, documents, or questions about voter suppression in Louisiana—or any of the 50 states—we want to hear from you.</p>
+    </div>
+</footer>
+
+</body>
+</html>
